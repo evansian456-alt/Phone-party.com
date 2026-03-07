@@ -20,7 +20,6 @@ README.md
 # Docker / deployment files (not website content)
 Dockerfile
 .dockerignore
-nginx.conf
 cloudbuild.yaml
 
 # Temp / local dev
