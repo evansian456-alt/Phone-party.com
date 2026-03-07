@@ -24,13 +24,14 @@ This website is the public-facing marketing site that explains the product, show
 
 ```
 Phone-party.com/
-├── index.html    # Main single-page marketing website
-├── style.css     # Premium dark UI styles (glassmorphism, neon, animations)
-├── script.js     # Interactive demo, animations, FAQ accordion, confetti
-├── Dockerfile    # Production container – nginx serving static files
-├── nginx.conf    # nginx config template (respects Cloud Run PORT env var)
-├── .dockerignore # Files excluded from the Docker build context
-└── README.md     # This file
+├── index.html       # Main single-page marketing website
+├── style.css        # Premium dark UI styles (glassmorphism, neon, animations)
+├── script.js        # Interactive demo, animations, FAQ accordion, confetti
+├── Dockerfile       # Production container – nginx:alpine serving static files on port 8080
+├── nginx.conf       # nginx config: port 8080, gzip, SPA fallback, asset caching
+├── cloudbuild.yaml  # Google Cloud Build pipeline: build → push → deploy to Cloud Run
+├── .dockerignore    # Files excluded from the Docker build context
+└── README.md        # This file
 ```
 
 ---
@@ -59,10 +60,10 @@ python3 -m http.server 8080
    - **Cloud Run API**
    - **Artifact Registry API**
    - **Cloud Build API** (for automated GitHub deploys)
-3. Create an **Artifact Registry** Docker repository, e.g.:
+3. Create an **Artifact Registry** Docker repository:
    ```
    Region: us-central1
-   Name:   phone-party-images
+   Name:   phone-party
    Format: Docker
    ```
 4. Note your project ID (e.g. `YOUR_PROJECT_ID`) – you'll use it below.
@@ -74,18 +75,18 @@ python3 -m http.server 8080
 ```bash
 PROJECT_ID=YOUR_PROJECT_ID
 REGION=us-central1
-REGISTRY=${REGION}-docker.pkg.dev/${PROJECT_ID}/phone-party-images
+REGISTRY=${REGION}-docker.pkg.dev/${PROJECT_ID}/phone-party
 
 # Authenticate Docker with Google Artifact Registry
 gcloud auth configure-docker ${REGION}-docker.pkg.dev
 
 # Build and push the image
-docker build -t ${REGISTRY}/phone-party-web:latest .
-docker push ${REGISTRY}/phone-party-web:latest
+docker build -t ${REGISTRY}/phone-party-com-git:latest .
+docker push ${REGISTRY}/phone-party-com-git:latest
 
 # Deploy to Cloud Run
-gcloud run deploy phone-party-web \
-  --image=${REGISTRY}/phone-party-web:latest \
+gcloud run deploy phone-party-com-git \
+  --image=${REGISTRY}/phone-party-com-git:latest \
   --platform=managed \
   --region=${REGION} \
   --allow-unauthenticated \
@@ -96,70 +97,33 @@ Cloud Run will print the service URL once the deploy completes.
 
 ---
 
-### Continuous deployment from GitHub → Cloud Run
+### Continuous deployment from GitHub → Cloud Run via Cloud Build
 
-Use **Cloud Run's built-in GitHub integration** (no separate CI pipeline needed):
+Every push to the `main` branch automatically triggers a full build and deploy through **Google Cloud Build** using the `cloudbuild.yaml` in the repository root.
 
-1. In **Cloud Run → Create Service** (or edit your existing service), choose
-   **"Continuously deploy from a repository"**.
+**What `cloudbuild.yaml` does:**
+
+1. **Build** – builds the Docker image using the `Dockerfile` and tags it with the commit SHA:
+   ```
+   us-central1-docker.pkg.dev/$PROJECT_ID/phone-party/phone-party-com-git:$COMMIT_SHA
+   ```
+2. **Push** – pushes the image to Artifact Registry.
+3. **Deploy** – deploys the image to the Cloud Run service `phone-party-com-git` in `us-central1` with public (unauthenticated) access.
+
+The `options: logging: CLOUD_LOGGING_ONLY` setting is required when using a custom build service account (avoids the "logs_bucket or CLOUD_LOGGING_ONLY required" error).
+
+**One-time setup to connect the trigger:**
+
+1. In **Google Cloud Console → Cloud Build → Triggers**, click **Create Trigger**.
 2. Connect your GitHub account and select:
    - **Repository**: `evansian456-alt/Phone-party.com`
-   - **Branch**: `main`
-   - **Build type**: Dockerfile
-3. Cloud Run will automatically build and redeploy on every push to `main`.
-
-Alternatively, add this **GitHub Actions** workflow for full control:
-
-```yaml
-# .github/workflows/deploy.yml
-name: Deploy to Cloud Run
-
-on:
-  push:
-    branches: [main]
-
-env:
-  PROJECT_ID: YOUR_PROJECT_ID        # ← replace with your GCP project ID
-  REGION: us-central1
-  SERVICE: phone-party-web
-  REGISTRY: us-central1-docker.pkg.dev/YOUR_PROJECT_ID/phone-party-images
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write              # Needed for Workload Identity Federation
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - id: auth
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: projects/<PROJECT_NUMBER>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>
-          service_account: <SA_EMAIL>@<PROJECT_ID>.iam.gserviceaccount.com
-          # To obtain these values, set up Workload Identity Federation:
-          # https://cloud.google.com/iam/docs/workload-identity-federation-with-deployment-pipelines
-          # Then run: gcloud iam workload-identity-pools providers describe <PROVIDER> \
-          #   --workload-identity-pool=<POOL> --location=global
-
-      - uses: google-github-actions/setup-gcloud@v2
-
-      - run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
-
-      - run: |
-          docker build -t ${{ env.REGISTRY }}/phone-party-web:${{ github.sha }} .
-          docker push ${{ env.REGISTRY }}/phone-party-web:${{ github.sha }}
-
-      - run: |
-          gcloud run deploy ${{ env.SERVICE }} \
-            --image=${{ env.REGISTRY }}/phone-party-web:${{ github.sha }} \
-            --platform=managed \
-            --region=${{ env.REGION }} \
-            --allow-unauthenticated \
-            --port=8080
-```
+   - **Branch**: `^main$`
+   - **Configuration**: Cloud Build configuration file (`cloudbuild.yaml`)
+3. Assign the trigger a service account that has:
+   - `roles/run.admin` (deploy to Cloud Run)
+   - `roles/artifactregistry.writer` (push images)
+   - `roles/iam.serviceAccountUser` (act as the Cloud Run runtime SA)
+4. Save. Every push to `main` will now build and deploy automatically.
 
 ---
 

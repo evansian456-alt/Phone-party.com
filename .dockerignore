@@ -17,9 +17,11 @@ Thumbs.db
 # Docs (not needed in the image)
 README.md
 
-# Docker files (not website content)
+# Docker / deployment files (not website content)
 Dockerfile
 .dockerignore
+nginx.conf
+cloudbuild.yaml
 
 # Temp / local dev
 *.log
