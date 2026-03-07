@@ -1,5 +1,6 @@
 # Git metadata
 .git
+.github
 .gitignore
 .gitattributes
 
@@ -15,6 +16,11 @@ Thumbs.db
 
 # Docs (not needed in the image)
 README.md
+
+# Docker files (not website content)
+Dockerfile
+.dockerignore
+nginx.conf
 
 # Temp / local dev
 *.log
