@@ -1,0 +1,21 @@
+# Git metadata
+.git
+.gitignore
+.gitattributes
+
+# Editor/IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docs (not needed in the image)
+README.md
+
+# Temp / local dev
+*.log
+tmp/
