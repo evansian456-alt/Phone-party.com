@@ -147,12 +147,17 @@ function initDemo() {
   // Party code click to copy
   document.addEventListener('click', e => {
     if (e.target.closest('.party-code') && demoState.partyCode) {
-      navigator.clipboard?.writeText(demoState.partyCode)
-        .then(() => showToast('🎉 Party code copied!'))
-        .catch(err => {
-          console.warn('Clipboard write failed:', err);
-          showToast('📋 Copy this code: ' + demoState.partyCode);
-        });
+      // Clipboard API requires HTTPS or localhost; fall back to a visible prompt
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(demoState.partyCode)
+          .then(() => showToast('🎉 Party code copied!'))
+          .catch(err => {
+            console.warn('Clipboard write failed:', err);
+            showToast('📋 Copy this code: ' + demoState.partyCode);
+          });
+      } else {
+        showToast('📋 Your code: ' + demoState.partyCode);
+      }
     }
   });
 
@@ -390,6 +395,7 @@ function updateCrowdEnergy() {
    6. Party Code Generator
    ============================================================ */
 function generatePartyCode() {
+  // Excludes visually similar characters (I, O, 1, 0) to prevent misreading
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   const part = (len) => Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
   return `${part(4)}-${part(4)}`;
@@ -678,7 +684,11 @@ function initParticles() {
 
   init();
   draw();
-  window.addEventListener('resize', () => { resize(); });
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 150);
+  });
 }
 
 /* ============================================================
@@ -691,16 +701,23 @@ function initShareLink() {
 
   btn.addEventListener('click', () => {
     const url = input.value;
-    navigator.clipboard?.writeText(url)
-      .then(() => {
-        showToast('🔗 Referral link copied!');
-        btn.textContent = 'Copied!';
-        setTimeout(() => (btn.textContent = 'Copy'), 2000);
-      })
-      .catch(err => {
-        console.warn('Clipboard write failed:', err);
-        showToast('📋 Copy the link from the box above!');
-      });
+    // Clipboard API requires HTTPS or localhost; fall back for non-secure contexts
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url)
+        .then(() => {
+          showToast('🔗 Referral link copied!');
+          btn.textContent = 'Copied!';
+          setTimeout(() => (btn.textContent = 'Copy'), 2000);
+        })
+        .catch(err => {
+          console.warn('Clipboard write failed:', err);
+          showToast('📋 Copy the link from the box above!');
+        });
+    } else {
+      showToast('📋 Copy the link from the box above!');
+      btn.textContent = 'Copied!';
+      setTimeout(() => (btn.textContent = 'Copy'), 2000);
+    }
   });
 }
 
