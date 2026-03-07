@@ -1,5 +1,6 @@
 name: CI
 
+# Builds and tests the Docker image on every push and PR
 on:
   push:
     branches: ["**"]
