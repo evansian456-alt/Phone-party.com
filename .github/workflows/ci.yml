@@ -1,0 +1,29 @@
+name: CI
+
+# Builds and tests the Docker image on every push and PR
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  build:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t phone-party-com:ci .
+
+      - name: Verify container starts and serves on port 8080
+        run: |
+          docker run -d --name test-container -p 8080:8080 phone-party-com:ci
+          sleep 2
+          curl -sf http://localhost:8080/ | grep -q "Phone Party"
+          docker stop test-container
+          docker rm test-container
