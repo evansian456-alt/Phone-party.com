@@ -1,18 +1,19 @@
-FROM nginx:alpine
+# Use official nginx image on Alpine for a minimal, production-safe image
+FROM nginx:1.27-alpine
 
-# Remove default nginx configuration
-RUN rm /etc/nginx/conf.d/default.conf
+# Remove default nginx static content
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy the static site into the nginx html directory
+COPY index.html style.css script.js /usr/share/nginx/html/
 
-# Copy static website files
-COPY index.html /usr/share/nginx/html/index.html
-COPY style.css /usr/share/nginx/html/style.css
-COPY script.js /usr/share/nginx/html/script.js
+# Copy custom nginx config that respects Cloud Run's PORT env var
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
-# Expose port 8080 (Cloud Run requirement)
+# Cloud Run sets the PORT env var (default 8080); nginx picks it up via envsubst
+ENV PORT=8080
+
 EXPOSE 8080
 
-# Run nginx in foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Use the envsubst entrypoint so nginx.conf substitutes $PORT at startup
+CMD ["/bin/sh", "-c", "envsubst '$PORT' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
