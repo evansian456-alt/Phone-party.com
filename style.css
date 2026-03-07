@@ -544,6 +544,35 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
 }
 
+/* Hero platform compatibility strip */
+.hero-platforms {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.hero-platforms-label {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.hero-platform-logo {
+  display: flex;
+  align-items: center;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+
+.hero-platform-logo:hover {
+  opacity: 1;
+}
+
 /* ============================================================
    Phone Mockups
    ============================================================ */
@@ -1411,7 +1440,10 @@ h1, h2, h3, h4, h5, h6 {
 .provider-logo {
   font-size: 3rem;
   margin-bottom: 16px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
 }
 
 .provider-name {
