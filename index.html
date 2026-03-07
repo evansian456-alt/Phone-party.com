@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       SEO Head
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phone Party – Turn Phones Into One Big Speaker</title>
+
+  <!-- Meta Description -->
+  <meta name="description" content="Phone Party syncs multiple phones together into one massive sound system. Create or join a party in seconds — upload music, react in real time, and vibe as one crowd." />
+  <meta name="keywords" content="phone party, sync phones speaker, social music party, multi-phone sound system, party app, DJ party platform" />
+  <meta name="author" content="Phone Party" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.phone-party.com" />
+
+  <!-- OpenGraph Tags -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://www.phone-party.com" />
+  <meta property="og:title"       content="Phone Party – Turn Phones Into One Big Speaker" />
+  <meta property="og:description" content="Sync every phone in the room into one massive sound system. Create a party, invite friends, and drop the beat — all from your pocket." />
+  <meta property="og:image"       content="https://www.phone-party.com/og-image.png" />
+  <meta property="og:site_name"   content="Phone Party" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@PhonePartyApp" />
+  <meta name="twitter:creator"     content="@PhonePartyApp" />
+  <meta name="twitter:title"       content="Phone Party – Turn Phones Into One Big Speaker" />
+  <meta name="twitter:description" content="Sync every phone in the room into one massive sound system. Create a party, invite friends, drop the beat." />
+  <meta name="twitter:image"       content="https://www.phone-party.com/twitter-card.png" />
+
+  <!-- Favicon Placeholders -->
+  <link rel="icon"             type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon"             type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180"                href="/apple-touch-icon.png" />
+  <link rel="manifest"                                         href="/site.webmanifest" />
+  <meta name="theme-color" content="#7c3aed" />
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     Toast Container (injected by JS, defined here for SSR fallback)
+     ============================================================ -->
+<div class="toast-container" aria-live="polite"></div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <!-- Logo -->
+    <a href="#" class="nav-logo" aria-label="Phone Party home">
+      <div class="logo-icon" aria-hidden="true">🎵</div>
+      <span>Phone Party</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="nav-links" role="list">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <!-- Desktop CTA -->
+    <div class="nav-actions">
+      <a href="#demo" class="btn btn-glow btn-sm">Join Party</a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <a href="#features">Features</a>
+  <a href="#how-it-works">How It Works</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#faq">FAQ</a>
+  <a href="#demo" class="btn btn-primary btn-lg" style="margin-top:16px;">Join Party 🎵</a>
+</div>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero" id="home" aria-label="Hero">
+  <!-- Background -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="hero-content">
+    <!-- Left: Text -->
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        🔴 Live Parties Happening Now
+      </div>
+
+      <h1 class="hero-headline">
+        Turn Phones Into<br />
+        <span class="text-gradient-neon">One Big Speaker</span>
+      </h1>
+
+      <p class="hero-sub">
+        Sync every phone in the room into a single, massive sound system.
+        Create a party, invite your crew, upload music, and drop the beat —
+        all from your pocket. No cables. No DJ gear. Just vibes.
+      </p>
+
+      <!-- Soundwave -->
+      <div class="soundwave-container" aria-hidden="true">
+        <div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary btn-lg" data-action="create-party" id="heroCreateBtn">
+          🎉 Create a Party
+        </button>
+        <button class="btn btn-secondary btn-lg" data-action="join-party">
+          📱 Join a Party
+        </button>
+        <a href="#demo" class="btn btn-outline btn-lg" id="heroStartDemoBtn">
+          ▶ Start Demo Party
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-value" data-count="10000">0</span>
+          <span class="stat-label">Parties Created</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-value" data-count="250000">0</span>
+          <span class="stat-label">Phones Synced</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-value" data-count="98">0</span>
+          <span class="stat-label">% Satisfaction</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Visual -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="phones-container">
+        <!-- Phone 1 -->
+        <div class="phone-mockup phone-mockup-1">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-status">
+              <span>9:41</span><span>📶 🔋</span>
+            </div>
+            <div class="phone-screen-content">
+              <div class="mini-waveform">
+                <div class="mini-bar" style="height:8px"></div>
+                <div class="mini-bar" style="height:14px"></div>
+                <div class="mini-bar" style="height:10px"></div>
+                <div class="mini-bar" style="height:16px"></div>
+                <div class="mini-bar" style="height:12px"></div>
+              </div>
+              <div class="mini-label">🎵 Synced</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone 2 (center, main) -->
+        <div class="phone-mockup phone-mockup-2">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-status">
+              <span>9:41</span><span>📶 🔋</span>
+            </div>
+            <div class="phone-screen-content">
+              <div class="mini-waveform">
+                <div class="mini-bar" style="height:10px"></div>
+                <div class="mini-bar" style="height:18px"></div>
+                <div class="mini-bar" style="height:14px"></div>
+                <div class="mini-bar" style="height:20px"></div>
+                <div class="mini-bar" style="height:16px"></div>
+              </div>
+              <div class="mini-label">🎤 DJ Mode</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone 3 -->
+        <div class="phone-mockup phone-mockup-3">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-status">
+              <span>9:41</span><span>📶 🔋</span>
+            </div>
+            <div class="phone-screen-content">
+              <div class="mini-waveform">
+                <div class="mini-bar" style="height:6px"></div>
+                <div class="mini-bar" style="height:12px"></div>
+                <div class="mini-bar" style="height:18px"></div>
+                <div class="mini-bar" style="height:10px"></div>
+                <div class="mini-bar" style="height:14px"></div>
+              </div>
+              <div class="mini-label">🔥 Vibing</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glow effect under phones -->
+        <div class="phone-glow"></div>
+      </div>
+
+      <!-- Floating UI Cards -->
+      <div class="floating-cards">
+        <div class="float-card float-card-1">
+          <span class="fc-icon">🎵</span>
+          <div>
+            <div class="fc-label">Now Playing</div>
+            <div class="fc-value">Blinding Lights</div>
+          </div>
+        </div>
+        <div class="float-card float-card-2">
+          <span class="fc-icon">👥</span>
+          <div>
+            <div class="fc-label">Phones Synced</div>
+            <div class="fc-value">12 Phones</div>
+          </div>
+        </div>
+        <div class="float-card float-card-3">
+          <span class="fc-icon">🔥</span>
+          <div>
+            <div class="fc-label">Crowd Energy</div>
+            <div class="fc-value">87%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INTERACTIVE DEMO SECTION
+     ============================================================ -->
+<section class="demo-section section" id="demo" aria-label="Interactive demo">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Try it now</span>
+      <h2>See It Live – <span class="text-gradient">Try the Demo</span></h2>
+      <p>Experience Phone Party in 4 steps. Click "Start Demo Party" to kick things off.</p>
+    </div>
+
+    <div class="demo-container reveal">
+      <!-- Browser chrome -->
+      <div class="demo-header">
+        <div class="demo-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="demo-title-bar">phone-party.com – Live Demo</div>
+        <button class="btn btn-primary btn-sm" id="startDemoBtn">▶ Start Demo Party</button>
+      </div>
+
+      <!-- Step Tabs -->
+      <div class="demo-steps" role="tablist">
+        <div class="demo-step-tab active" role="tab" data-step="0">
+          <span class="step-num">1</span>Create Party
+        </div>
+        <div class="demo-step-tab" role="tab" data-step="1">
+          <span class="step-num">2</span>Phones Joining
+        </div>
+        <div class="demo-step-tab" role="tab" data-step="2">
+          <span class="step-num">3</span>Upload & Queue
+        </div>
+        <div class="demo-step-tab" role="tab" data-step="3">
+          <span class="step-num">4</span>Sync & React
+        </div>
+      </div>
+
+      <!-- Step Content -->
+      <div class="demo-content">
+
+        <!-- PANEL 1: Create Party -->
+        <div class="demo-panel active" id="demoPanel1" role="tabpanel">
+          <h3 style="margin-bottom:8px;">🎉 Create Your Party</h3>
+          <p style="color:var(--text-secondary);font-size:0.9375rem;margin-bottom:24px;">
+            Hit "Start Demo Party" above to generate your unique party code. Share it with friends so they can join instantly.
+          </p>
+          <div class="party-code-display">
+            <div class="party-code" id="partyCode" title="Click to copy">----</div>
+            <div class="party-code-hint">👆 Click the code to copy it · Share with friends</div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
+            <div style="flex:1;min-width:200px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">HOST</div>
+              <div style="font-weight:600;">You (DJ Mode)</div>
+            </div>
+            <div style="flex:1;min-width:200px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">VENUE</div>
+              <div style="font-weight:600;">Your Location</div>
+            </div>
+            <div style="flex:1;min-width:200px;padding:16px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:var(--radius-md);">
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">STATUS</div>
+              <div style="font-weight:600;color:var(--accent-green);">🟢 Open to Join</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 2: Phones Joining -->
+        <div class="demo-panel" id="demoPanel2" role="tabpanel">
+          <div class="phones-joining">
+            <h3>📱 Phones Joining</h3>
+            <div class="join-counter" id="joinCounter"><span>0</span></div>
+            <p style="color:var(--text-secondary);font-size:0.875rem;">phones connected to your party</p>
+            <div class="phone-join-grid" id="phoneJoinGrid" aria-live="polite">
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+              <span class="phone-join-icon" aria-hidden="true">📱</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 3: Upload & Queue -->
+        <div class="demo-panel" id="demoPanel3" role="tabpanel">
+          <h3 style="margin-bottom:16px;">🎵 Upload & Queue</h3>
+          <div class="upload-area">
+            <div style="font-size:2rem;margin-bottom:8px;">📁</div>
+            <div style="font-weight:600;margin-bottom:4px;">Drop your track here</div>
+            <div style="font-size:0.8125rem;color:var(--text-muted);">MP3, WAV, FLAC up to 50MB</div>
+            <div class="upload-progress" style="margin-top:16px;">
+              <div class="upload-progress-fill" id="uploadProgressFill"></div>
+            </div>
+          </div>
+          <div class="queue-list" id="queueList">
+            <div class="queue-item" data-queue="1">
+              <div class="queue-num">▶</div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:0.9375rem;">Blinding Lights</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">The Weeknd</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">3:20</div>
+            </div>
+            <div class="queue-item" data-queue="2">
+              <div class="queue-num">2</div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:0.9375rem;">Levitating</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">Dua Lipa</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">3:23</div>
+            </div>
+            <div class="queue-item" data-queue="3">
+              <div class="queue-num">3</div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:0.9375rem;">As It Was</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">Harry Styles</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">2:37</div>
+            </div>
+            <div class="queue-item" data-queue="4">
+              <div class="queue-num">4</div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:0.9375rem;">Flowers</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">Miley Cyrus</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">3:21</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 4: Sync & React -->
+        <div class="demo-panel" id="demoPanel4" role="tabpanel">
+          <h3 style="text-align:center;margin-bottom:8px;">🔥 All Phones Synced!</h3>
+          <p style="text-align:center;color:var(--text-secondary);font-size:0.875rem;margin-bottom:28px;">React to the music in real time. Every reaction is shared with the whole party!</p>
+
+          <div class="reaction-panel">
+            <button class="reaction-btn" data-reaction="fire" style="pointer-events:none;" aria-label="Fire reaction">
+              <span class="reaction-emoji">🔥</span>
+              <span class="reaction-count">0</span>
+            </button>
+            <button class="reaction-btn" data-reaction="heart" style="pointer-events:none;" aria-label="Heart reaction">
+              <span class="reaction-emoji">❤️</span>
+              <span class="reaction-count">0</span>
+            </button>
+            <button class="reaction-btn" data-reaction="party" style="pointer-events:none;" aria-label="Party reaction">
+              <span class="reaction-emoji">🎉</span>
+              <span class="reaction-count">0</span>
+            </button>
+            <button class="reaction-btn" data-reaction="lightning" style="pointer-events:none;" aria-label="Lightning reaction">
+              <span class="reaction-emoji">⚡</span>
+              <span class="reaction-count">0</span>
+            </button>
+          </div>
+
+          <div class="energy-display">
+            <div class="energy-label">⚡ Crowd Energy</div>
+            <div class="energy-bar-outer">
+              <div class="energy-bar-inner" id="demoEnergyBar"></div>
+            </div>
+            <div class="energy-value" id="demoEnergyValue">0%</div>
+          </div>
+        </div>
+
+      </div><!-- /demo-content -->
+
+      <!-- Now Playing Bar (global) -->
+      <div class="now-playing-bar" style="margin:0;border-radius:0;border-top:1px solid var(--border-subtle);border-bottom:none;border-left:none;border-right:none;">
+        <div class="np-disc">🎵</div>
+        <div class="np-info">
+          <div class="np-title">Blinding Lights</div>
+          <div class="np-artist">The Weeknd · 12 Phones Synced</div>
+        </div>
+        <div class="np-waveform" aria-hidden="true">
+          <div class="np-bar" style="height:8px;animation-delay:0s"></div>
+          <div class="np-bar" style="height:14px;animation-delay:0.1s"></div>
+          <div class="np-bar" style="height:10px;animation-delay:0.2s"></div>
+          <div class="np-bar" style="height:18px;animation-delay:0.15s"></div>
+          <div class="np-bar" style="height:12px;animation-delay:0.05s"></div>
+          <div class="np-bar" style="height:20px;animation-delay:0.25s"></div>
+          <div class="np-bar" style="height:14px;animation-delay:0.1s"></div>
+        </div>
+      </div>
+
+    </div><!-- /demo-container -->
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="how-it-works section" id="how-it-works" aria-label="How it works">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Simple as 1-2-3-4</span>
+      <h2>How <span class="text-gradient">Phone Party</span> Works</h2>
+      <p>From zero to full party in under 60 seconds. No app install required for guests.</p>
+    </div>
+
+    <div class="steps-container">
+      <!-- Step 1 -->
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-number"><span class="step-icon">🎤</span></div>
+        <h3 class="step-title">Create Your DJ Profile</h3>
+        <p class="step-desc">Sign up in seconds. Pick your DJ name, choose your vibe, and get your host dashboard ready to rock.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-number"><span class="step-icon">🎉</span></div>
+        <h3 class="step-title">Start or Join a Party</h3>
+        <p class="step-desc">Hosts create a party and get a unique code. Guests scan a QR or type the code — no accounts needed to join.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-number"><span class="step-icon">🎵</span></div>
+        <h3 class="step-title">Upload Music or Pick a Provider</h3>
+        <p class="step-desc">Upload MP3s directly from your phone, or connect YouTube, Spotify, and SoundCloud with Official App Sync.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card reveal reveal-delay-4">
+        <div class="step-number"><span class="step-icon">📡</span></div>
+        <h3 class="step-title">Phones Sync in Real Time</h3>
+        <p class="step-desc">Every phone in the room locks together millisecond-precise. One beat. One crowd. Infinite energy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURES GRID
+     ============================================================ -->
+<section class="features-section section" id="features" aria-label="Features">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Everything you need</span>
+      <h2>Packed With <span class="text-gradient">Party Features</span></h2>
+      <p>Every tool a DJ and every guest needs to make the party unforgettable.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <span class="feature-icon">📡</span>
+        <h3 class="feature-title">Multi-Phone Sync</h3>
+        <p class="feature-desc">Millisecond-precision sync across unlimited devices. Every phone plays as one perfectly timed speaker system.</p>
+        <span class="feature-badge badge-pro">CORE</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🎤</span>
+        <h3 class="feature-title">DJ Party Control</h3>
+        <p class="feature-desc">Full host dashboard. Control the queue, manage guests, set crowd energy goals, and dominate the night.</p>
+        <span class="feature-badge badge-free">FREE</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🔑</span>
+        <h3 class="feature-title">Join with Party Code</h3>
+        <p class="feature-desc">Guests join instantly with a party code or QR scan. No downloads. No accounts. Just vibe.</p>
+        <span class="feature-badge badge-free">FREE</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">📁</span>
+        <h3 class="feature-title">Upload Music from Phone</h3>
+        <p class="feature-desc">Drag and drop MP3, WAV, FLAC files directly from your phone. Best quality, guaranteed sync.</p>
+        <span class="feature-badge badge-free">FREE</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">📋</span>
+        <h3 class="feature-title">Queue &amp; Up Next</h3>
+        <p class="feature-desc">Visual queue management. Reorder tracks, vote on what plays next, and keep the energy building.</p>
+        <span class="feature-badge badge-free">FREE</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🔥</span>
+        <h3 class="feature-title">Real-Time Reactions</h3>
+        <p class="feature-desc">Fire, heart, party, lightning — guests react live and see everyone's energy fill the screen.</p>
+        <span class="feature-badge badge-free">FREE</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <h3 class="feature-title">Guest Chat</h3>
+        <p class="feature-desc">Real-time party chat with quick replies, emoji reactions, and song request messages built in.</p>
+        <span class="feature-badge badge-pro">PASS</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3 class="feature-title">Crowd Energy Meter</h3>
+        <p class="feature-desc">Live crowd energy score driven by reactions and engagement. Watch it spike when you drop a banger.</p>
+        <span class="feature-badge badge-pro">PASS</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🏆</span>
+        <h3 class="feature-title">DJ Moments</h3>
+        <p class="feature-desc">Capture peak energy moments automatically. Share highlight clips of the best parts of your party.</p>
+        <span class="feature-badge badge-pro">PASS</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🎧</span>
+        <h3 class="feature-title">Streaming Party</h3>
+        <p class="feature-desc">Connect YouTube, Spotify, and SoundCloud. Play from any platform while guests sync via their phones.</p>
+        <span class="feature-badge badge-new">NEW</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🔗</span>
+        <h3 class="feature-title">Official App Sync</h3>
+        <p class="feature-desc">Use your existing streaming apps. Phone Party syncs the playback — your library, your rules.</p>
+        <span class="feature-badge badge-new">NEW</span>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">✨</span>
+        <h3 class="feature-title">Add-ons &amp; Party Upgrades</h3>
+        <p class="feature-desc">Visual packs, DJ titles, party extensions, theme unlocks — customize your party experience fully.</p>
+        <span class="feature-badge badge-pro">PRO</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MUSIC UPLOAD EXPERIENCE
+     ============================================================ -->
+<section class="music-section section" id="music" aria-label="Music upload experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Your music, your party</span>
+      <h2>The <span class="text-gradient">Music Upload</span> Experience</h2>
+      <p>Upload directly from your phone for the purest, most reliable sync. No buffering. No dropouts.</p>
+    </div>
+
+    <div class="music-grid">
+      <!-- Left: Mockup -->
+      <div class="music-mockup reveal">
+        <div class="mockup-header">
+          <span class="mockup-header-title">🎵 Party Music Panel</span>
+          <span class="feature-badge badge-free" style="margin:0;">LIVE</span>
+        </div>
+        <div class="mockup-body">
+          <div class="upload-zone">
+            <div class="uz-icon">📁</div>
+            <div class="uz-title">Drop your tracks here</div>
+            <div class="uz-sub">MP3, WAV, FLAC · Up to 50MB per file</div>
+          </div>
+          <div class="queue-preview">
+            <div class="qp-item active">
+              <span class="qp-num">▶</span>
+              <span class="qp-title">Blinding Lights</span>
+              <span style="font-size:0.6875rem;padding:2px 8px;background:rgba(124,58,237,0.2);border-radius:4px;color:var(--accent-neon);">NOW</span>
+              <span class="qp-dur">3:20</span>
+            </div>
+            <div class="qp-item">
+              <span class="qp-num">2</span>
+              <span class="qp-title">Levitating</span>
+              <span class="qp-dur">3:23</span>
+            </div>
+            <div class="qp-item">
+              <span class="qp-num">3</span>
+              <span class="qp-title">As It Was</span>
+              <span class="qp-dur">2:37</span>
+            </div>
+            <div class="qp-item">
+              <span class="qp-num">4</span>
+              <span class="qp-title">Flowers</span>
+              <span class="qp-dur">3:21</span>
+            </div>
+            <div class="qp-item" style="border:1px dashed rgba(255,255,255,0.1);justify-content:center;color:var(--text-muted);font-size:0.8125rem;">
+              + Add more tracks
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Features List -->
+      <div class="music-features-list reveal">
+        <div class="mf-item">
+          <div class="mf-icon">📁</div>
+          <div>
+            <div class="mf-title">Upload Any Audio File</div>
+            <div class="mf-desc">Supports MP3, WAV, FLAC, AAC and more. Files are processed instantly and ready to play in seconds.</div>
+          </div>
+        </div>
+        <div class="mf-item">
+          <div class="mf-icon">📋</div>
+          <div>
+            <div class="mf-title">Smart Queue Management</div>
+            <div class="mf-desc">Drag to reorder, remove tracks on the fly, and let guests vote on what plays next with the crowd vote feature.</div>
+          </div>
+        </div>
+        <div class="mf-item">
+          <div class="mf-icon">🔊</div>
+          <div>
+            <div class="mf-title">Best Sync Quality</div>
+            <div class="mf-desc">Uploaded files deliver the tightest sync with zero streaming latency. Perfect for packed rooms and big spaces.</div>
+          </div>
+        </div>
+        <div class="mf-item">
+          <div class="mf-icon">📡</div>
+          <div>
+            <div class="mf-title">Instant Cross-Device Delivery</div>
+            <div class="mf-desc">Once uploaded, every phone in the party receives the track automatically — no waiting, no manual sharing.</div>
+          </div>
+        </div>
+        <div class="mf-item">
+          <div class="mf-icon">💾</div>
+          <div>
+            <div class="mf-title">Party Library Saved</div>
+            <div class="mf-desc">Your uploaded tracks are saved in your DJ library for future parties. Build your signature setlist over time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STREAMING PROVIDERS
+     ============================================================ -->
+<section class="streaming-section section" id="streaming" aria-label="Streaming providers">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Stream anything</span>
+      <h2>Connect Your <span class="text-gradient">Favorite Platforms</span></h2>
+      <p>Link YouTube, Spotify, and SoundCloud or use Official App Sync to play from any existing app.</p>
+    </div>
+
+    <div class="providers-grid reveal">
+      <div class="provider-card youtube">
+        <span class="provider-logo">📺</span>
+        <h3 class="provider-name">YouTube</h3>
+        <p class="provider-desc">Access billions of tracks and music videos. Play any YouTube audio across your party instantly.</p>
+      </div>
+      <div class="provider-card spotify">
+        <span class="provider-logo">🎧</span>
+        <h3 class="provider-name">Spotify</h3>
+        <p class="provider-desc">Connect your Spotify Premium and play from your playlists, Discover Weekly, and curated party mixes.</p>
+      </div>
+      <div class="provider-card soundcloud">
+        <span class="provider-logo">☁️</span>
+        <h3 class="provider-name">SoundCloud</h3>
+        <p class="provider-desc">Tap into underground tracks, DJ mixes, and exclusive drops from creators worldwide.</p>
+      </div>
+    </div>
+
+    <div class="app-sync-box reveal">
+      <div class="app-sync-text">
+        <span class="eyebrow" style="display:inline-block;margin-bottom:12px;">🔗 New Feature</span>
+        <h3>Official App Sync</h3>
+        <p>Keep using Spotify, YouTube Music, or Apple Music on your own device. Phone Party listens to what's playing and syncs every other phone in the room — automatically. Your library. Your taste. Zero compromise.</p>
+        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+          <span class="feature-badge badge-new" style="padding:8px 16px;font-size:0.8125rem;">Beta Available Now</span>
+          <span class="feature-badge badge-pro" style="padding:8px 16px;font-size:0.8125rem;">Party Pass Required</span>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:28px;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:16px;">🔗</div>
+        <h4 style="margin-bottom:8px;">How It Works</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;text-align:left;font-size:0.875rem;color:var(--text-secondary);">
+          <div>① Play music on your device normally</div>
+          <div>② Phone Party detects the audio via sync signal</div>
+          <div>③ All guest phones lock to your stream</div>
+          <div>④ Guests hear everything in perfect sync 🎉</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOST / DJ EXPERIENCE
+     ============================================================ -->
+<section class="dj-section section" id="dj" aria-label="Host and DJ experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">For the DJ in you</span>
+      <h2>The Host <span class="text-gradient">DJ Experience</span></h2>
+      <p>Everything you need to run the room. Your dashboard. Your rules. Your party.</p>
+    </div>
+
+    <div class="dj-grid">
+      <!-- Left: Dashboard Mockup -->
+      <div class="dj-dashboard reveal">
+        <div class="dj-dash-header">
+          <span class="dj-dash-title">🎤 DJ Dashboard – PARTY-7K2M</span>
+          <span class="live-badge">LIVE</span>
+        </div>
+
+        <div class="dj-metrics">
+          <div class="metric-box">
+            <div class="metric-value text-gradient-neon">12</div>
+            <div class="metric-label">Phones Synced</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-value" style="color:var(--accent-green);">87%</div>
+            <div class="metric-label">Crowd Energy</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-value" style="color:var(--accent-secondary);">3</div>
+            <div class="metric-label">In Queue</div>
+          </div>
+        </div>
+
+        <div style="padding:16px 24px;border-bottom:1px solid var(--border-subtle);">
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:10px;font-weight:600;">NOW PLAYING</div>
+          <div class="now-playing-bar" style="border-radius:var(--radius-md);playing">
+            <div class="np-disc">🎵</div>
+            <div class="np-info">
+              <div class="np-title">Blinding Lights</div>
+              <div class="np-artist">The Weeknd · 1:42 / 3:20</div>
+            </div>
+            <div class="np-waveform" aria-hidden="true">
+              <div class="np-bar" style="height:8px;"></div>
+              <div class="np-bar" style="height:16px;animation-delay:0.1s"></div>
+              <div class="np-bar" style="height:12px;animation-delay:0.2s"></div>
+              <div class="np-bar" style="height:20px;animation-delay:0.15s"></div>
+              <div class="np-bar" style="height:10px;animation-delay:0.05s"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dj-controls">
+          <button class="ctrl-btn primary">⏭ Skip</button>
+          <button class="ctrl-btn">🔀 Shuffle</button>
+          <button class="ctrl-btn">🔁 Loop</button>
+          <button class="ctrl-btn">🔇 Mute All</button>
+          <button class="ctrl-btn">💬 Chat</button>
+          <button class="ctrl-btn" style="color:var(--accent-pink);border-color:rgba(236,72,153,0.3);">⚡ DJ Moment</button>
+        </div>
+      </div>
+
+      <!-- Right: Features -->
+      <div class="dj-features-list reveal">
+        <div class="dj-feature">
+          <div class="dj-feature-icon">🎉</div>
+          <div>
+            <div class="dj-feature-title">Start & Manage Parties</div>
+            <div class="dj-feature-desc">Create parties instantly with custom names. Control who joins, set capacity limits, and manage the guest list in real time.</div>
+          </div>
+        </div>
+        <div class="dj-feature">
+          <div class="dj-feature-icon">🎵</div>
+          <div>
+            <div class="dj-feature-title">Full Music Control</div>
+            <div class="dj-feature-desc">Play, skip, shuffle, and loop tracks from your dashboard. Adjust volume per-phone or globally. You run the show.</div>
+          </div>
+        </div>
+        <div class="dj-feature">
+          <div class="dj-feature-icon">🎫</div>
+          <div>
+            <div class="dj-feature-title">Party Pass Integration</div>
+            <div class="dj-feature-desc">Unlock unlimited phones, priority sync, crowd energy tracking, and premium DJ tools with a Party Pass.</div>
+          </div>
+        </div>
+        <div class="dj-feature">
+          <div class="dj-feature-icon">💬</div>
+          <div>
+            <div class="dj-feature-title">Chat Mode</div>
+            <div class="dj-feature-desc">Enable live chat so guests can send messages, song requests, and reactions directly to your DJ dashboard.</div>
+          </div>
+        </div>
+        <div class="dj-feature">
+          <div class="dj-feature-icon">⚡</div>
+          <div>
+            <div class="dj-feature-title">DJ Moments</div>
+            <div class="dj-feature-desc">Hit the DJ Moment button at peak energy to capture a clip, trigger a visual effect, and give your party a highlight reel.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GUEST EXPERIENCE
+     ============================================================ -->
+<section class="guest-section section" id="guests" aria-label="Guest experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">For every guest</span>
+      <h2>The <span class="text-gradient">Guest Experience</span></h2>
+      <p>No sign-up. No downloads. Just tap the link or type the code and you're in the party.</p>
+    </div>
+
+    <div class="guest-grid">
+      <!-- Left: Features -->
+      <div class="guest-features-list reveal">
+        <div class="dj-feature">
+          <div class="dj-feature-icon">🔑</div>
+          <div>
+            <div class="dj-feature-title">Join with a Code</div>
+            <div class="dj-feature-desc">Get a party code from your host, type it in, and you're synced within seconds. Works in any browser — no app install needed.</div>
+          </div>
+        </div>
+        <div class="dj-feature">
+          <div class="dj-feature-icon">📱</div>
+          <div>
+            <div class="dj-feature-title">QR Scan to Join</div>
+            <div class="dj-feature-desc">Hosts can display a QR code. Guests scan it and join instantly. Perfect for venues, events, and house parties.</div>
+          </div>
+        </div>
+        <div class="dj-feature">
+          <div class="dj-feature-icon">🔥</div>
+          <div>
+            <div class="dj-feature-title">Reaction Panel</div>
+            <div class="dj-feature-desc">React to every track with fire, hearts, party poppers, and lightning bolts. See everyone's reactions animate across the screen.</div>
+          </div>
+        </div>
+        <div class="dj-feature">
+          <div class="dj-feature-icon">💬</div>
+          <div>
+            <div class="dj-feature-title">Live Party Chat</div>
+            <div class="dj-feature-desc">Message the crowd, request songs, hype up the DJ, or just chat with people at the party — all in the app.</div>
+          </div>
+        </div>
+        <div class="dj-feature">
+          <div class="dj-feature-icon">⚡</div>
+          <div>
+            <div class="dj-feature-title">Quick Replies</div>
+            <div class="dj-feature-desc">One-tap replies like "🔥 This slaps", "🙏 Request a song", and "⬆️ Turn it up" keep the energy moving fast.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Chat Mockup -->
+      <div class="chat-mockup reveal">
+        <div class="chat-header">
+          <div class="chat-avatar">🎉</div>
+          <div>
+            <div class="chat-title">Party Chat – PARTY-7K2M</div>
+            <div class="chat-subtitle">12 guests · 🟢 Live</div>
+          </div>
+        </div>
+        <div class="chat-messages">
+          <div class="chat-msg">
+            <div class="msg-avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4);">A</div>
+            <div class="msg-bubble">
+              <div class="msg-name">Alex</div>
+              This song goes HARD 🔥
+            </div>
+          </div>
+          <div class="chat-msg">
+            <div class="msg-avatar" style="background:linear-gradient(135deg,#ec4899,#a855f7);">S</div>
+            <div class="msg-bubble">
+              <div class="msg-name">Sara</div>
+              Can you play Levitating next? 🙏
+            </div>
+          </div>
+          <div class="chat-msg self">
+            <div class="msg-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4);">You</div>
+            <div class="msg-bubble">
+              Already in the queue 😎🎵
+            </div>
+          </div>
+          <div class="chat-msg">
+            <div class="msg-avatar" style="background:linear-gradient(135deg,#f59e0b,#ec4899);">M</div>
+            <div class="msg-bubble">
+              <div class="msg-name">Mike</div>
+              Best party ever!! ⚡⚡⚡
+            </div>
+          </div>
+          <div class="chat-msg">
+            <div class="msg-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899);">J</div>
+            <div class="msg-bubble">
+              <div class="msg-name">Jess</div>
+              My phone is literally a speaker rn 😂🎵
+            </div>
+          </div>
+        </div>
+        <div class="quick-replies">
+          <button class="qr-btn">🔥 This slaps</button>
+          <button class="qr-btn">⬆️ Turn it up</button>
+          <button class="qr-btn">🎵 Request song</button>
+          <button class="qr-btn">🙌 Let's go!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING / PARTY LEVELS
+     ============================================================ -->
+<section class="pricing-section section" id="pricing" aria-label="Pricing">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Pick your level</span>
+      <h2>Party <span class="text-gradient">Plans &amp; Pricing</span></h2>
+      <p>Start free and upgrade when the party demands it. No hidden fees.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">
+          <span class="currency">$</span>0
+        </div>
+        <div class="plan-price-sub">Forever free · No credit card</div>
+        <p class="plan-desc">Perfect for small gatherings and trying out Phone Party with your crew.</p>
+        <ul class="plan-features">
+          <li class="plan-feature"><span class="check-icon">✓</span> Up to 5 phones per party</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Music upload (50MB/file)</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Basic queue management</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Real-time reactions</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Standard audio quality</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Party code &amp; QR join</li>
+        </ul>
+        <a href="#demo" class="btn btn-secondary" style="width:100%;justify-content:center;">
+          Start Free Party
+        </a>
+      </div>
+
+      <!-- Party Pass (Popular) -->
+      <div class="pricing-card popular reveal">
+        <div class="popular-badge">⭐ Most Popular</div>
+        <div class="plan-name">Party Pass</div>
+        <div class="plan-price">
+          <span class="currency">$</span>4<span style="font-size:1.5rem;font-weight:500;">.99</span>
+        </div>
+        <div class="plan-price-sub">Per party · One-time unlock</div>
+        <p class="plan-desc">Unlock the full experience for a single epic party. Everything you need, one night only.</p>
+        <ul class="plan-features">
+          <li class="plan-feature"><span class="check-icon">✓</span> <strong>Unlimited phones</strong></li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Premium audio quality</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Crowd Energy Meter</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> DJ Moments capture</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Live party chat</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Official App Sync (beta)</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Priority sync engine</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Visual party themes</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" data-action="create-party">
+          🎉 Get Party Pass
+        </button>
+      </div>
+
+      <!-- Pro Monthly -->
+      <div class="pricing-card reveal reveal-delay-2">
+        <div class="plan-name">Pro Monthly</div>
+        <div class="plan-price">
+          <span class="currency">$</span>14<span style="font-size:1.5rem;font-weight:500;">.99</span>
+        </div>
+        <div class="plan-price-sub">Per month · Cancel anytime</div>
+        <p class="plan-desc">For the dedicated party host. Unlimited parties, advanced analytics, and total control every month.</p>
+        <ul class="plan-features">
+          <li class="plan-feature"><span class="check-icon">✓</span> Everything in Party Pass</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Advanced analytics dashboard</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Custom party themes</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Unlimited DJ library</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Priority sync (lowest latency)</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Early access to new features</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Pro DJ title badge</li>
+        </ul>
+        <button class="btn btn-outline" style="width:100%;justify-content:center;">
+          🚀 Go Pro
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ADD-ONS / UPGRADES
+     ============================================================ -->
+<section class="addons-section section" id="addons" aria-label="Add-ons and upgrades">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Make it yours</span>
+      <h2>Add-ons &amp; <span class="text-gradient">Party Upgrades</span></h2>
+      <p>Deck out your party with visual packs, exclusive titles, and powerful extensions.</p>
+    </div>
+
+    <div class="addons-grid">
+      <div class="addon-card reveal reveal-delay-1">
+        <div class="addon-icon">🎨</div>
+        <h3 class="addon-name">Visual Packs</h3>
+        <p class="addon-desc">Custom animated backgrounds, color themes, and screen visualizers that pulse to the music.</p>
+        <div class="addon-price">From $1.99</div>
+      </div>
+      <div class="addon-card reveal reveal-delay-2">
+        <div class="addon-icon">👑</div>
+        <h3 class="addon-name">DJ Titles</h3>
+        <p class="addon-desc">Show off your status with exclusive DJ badges — Legend, Headliner, Rockstar, and more.</p>
+        <div class="addon-price">From $0.99</div>
+      </div>
+      <div class="addon-card reveal reveal-delay-3">
+        <div class="addon-icon">⏱️</div>
+        <h3 class="addon-name">Party Extensions</h3>
+        <p class="addon-desc">Keep the party going beyond the standard limit. Add 1 hour, 3 hours, or go all night.</p>
+        <div class="addon-price">From $1.49</div>
+      </div>
+      <div class="addon-card reveal reveal-delay-4">
+        <div class="addon-icon">🔓</div>
+        <h3 class="addon-name">Party Unlocks</h3>
+        <p class="addon-desc">Unlock special features mid-party: guest voting, song requests, crowd control mode, and more.</p>
+        <div class="addon-price">From $0.99</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOCIAL ENERGY SECTION
+     ============================================================ -->
+<section class="social-section section" id="energy" aria-label="Social energy">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Feel the room</span>
+      <h2>Social <span class="text-gradient-hot">Crowd Energy</span></h2>
+      <p>The more guests react, the higher the energy meter climbs. Watch the room come alive in real time.</p>
+    </div>
+
+    <div class="social-grid">
+      <!-- Left: Features -->
+      <div class="reveal">
+        <h3 style="font-size:1.5rem;margin-bottom:24px;">What Drives the Energy?</h3>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="dj-feature">
+            <div class="dj-feature-icon">🔥</div>
+            <div>
+              <div class="dj-feature-title">Live Reactions</div>
+              <div class="dj-feature-desc">Every fire, heart, and lightning bolt from guests adds to the crowd energy score in real time.</div>
+            </div>
+          </div>
+          <div class="dj-feature">
+            <div class="dj-feature-icon">💬</div>
+            <div>
+              <div class="dj-feature-title">Chat Activity</div>
+              <div class="dj-feature-desc">Messages, song requests, and quick replies all contribute to the live energy reading.</div>
+            </div>
+          </div>
+          <div class="dj-feature">
+            <div class="dj-feature-icon">📱</div>
+            <div>
+              <div class="dj-feature-title">Phone Movement</div>
+              <div class="dj-feature-desc">Guests dancing? Phones moving? Our motion detection picks that up and adds it to the energy meter.</div>
+            </div>
+          </div>
+          <div class="dj-feature">
+            <div class="dj-feature-icon">⚡</div>
+            <div>
+              <div class="dj-feature-title">Peak Moments</div>
+              <div class="dj-feature-desc">When energy hits 100%, a DJ Moment is automatically triggered and the whole party goes off.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Energy Meter Visual -->
+      <div class="energy-meter-visual reveal">
+        <div class="big-energy-label">⚡ Live Crowd Energy</div>
+        <div class="energy-ring">
+          <span class="energy-ring-value text-gradient-hot">75%</span>
+        </div>
+        <div class="reactions-showcase">
+          <div class="react-pill">🔥 <span>342</span></div>
+          <div class="react-pill">❤️ <span>218</span></div>
+          <div class="react-pill">🎉 <span>176</span></div>
+          <div class="react-pill">⚡ <span>290</span></div>
+        </div>
+        <div style="margin-top:20px;font-size:0.875rem;color:var(--text-muted);">
+          1,026 reactions in the last 60 seconds
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REFERRALS
+     ============================================================ -->
+<section class="referral-section section" id="referrals" aria-label="Referral program">
+  <div class="container">
+    <div class="referral-box reveal">
+      <span class="eyebrow" style="display:inline-block;margin-bottom:16px;">🎁 Free Party Pass Time</span>
+      <h2>Invite Friends,<br /><span class="text-gradient-neon">Earn Party Pass Time</span></h2>
+      <p>Every friend you bring to the party earns you free Party Pass hours. More friends = more parties, all on the house.</p>
+
+      <div class="share-link-display">
+        <input class="share-link-input" type="text" value="phone-party.com/join/your-code" readonly aria-label="Your referral link" />
+        <button class="share-link-btn">Copy Link</button>
+      </div>
+
+      <div class="referral-rewards">
+        <div class="reward-item">
+          <span class="reward-icon">👤</span>
+          <span class="reward-label">1 friend joins</span>
+          <span class="reward-value">+1 hour free</span>
+        </div>
+        <div class="reward-item">
+          <span class="reward-icon">👥</span>
+          <span class="reward-label">5 friends join</span>
+          <span class="reward-value">+1 Party Pass</span>
+        </div>
+        <div class="reward-item">
+          <span class="reward-icon">🎉</span>
+          <span class="reward-label">10 friends join</span>
+          <span class="reward-value">+1 Month Pro</span>
+        </div>
+        <div class="reward-item">
+          <span class="reward-icon">👑</span>
+          <span class="reward-label">25 friends join</span>
+          <span class="reward-value">Lifetime DJ Title</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="faq-section section" id="faq" aria-label="Frequently asked questions">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Got questions?</span>
+      <h2>Frequently Asked <span class="text-gradient">Questions</span></h2>
+      <p>Everything you need to know about Phone Party.</p>
+    </div>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How does Phone Party work?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            Phone Party uses a real-time sync engine to lock all connected phones to the same audio timestamp. The host uploads music or connects a streaming provider, and every phone in the party — connected via the party code — plays the audio in perfect sync. Think of it like turning every phone speaker into one element of a giant surround sound system.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How many phones can join a party?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            Free parties support up to 5 phones. With a Party Pass, you get unlimited phones per party — we've had parties with 200+ phones syncing simultaneously. Our sync engine is built to scale, so whether it's 5 people or 500, it stays tight.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can I upload my own music?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            Absolutely. You can upload MP3, WAV, FLAC, and AAC files directly from your phone. Uploaded tracks deliver the best sync quality since there's no streaming latency. Files are distributed to all guest phones automatically once uploaded to the party.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Does it work with Spotify?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            Yes! You can connect Spotify Premium through our streaming integration. Additionally, our new Official App Sync (beta) lets you play Spotify normally on your device while Phone Party automatically syncs every other phone in the room to your stream. Spotify Premium is required for the direct integration.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is Party Pass?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            Party Pass is a one-time, per-party upgrade ($4.99) that unlocks the full Phone Party experience for a single event. You get unlimited phones, premium audio quality, crowd energy tracking, DJ Moments, live chat, Official App Sync (beta), and priority sync. It's designed for when you want to go all out for one night without a subscription.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is Official App Sync?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            Official App Sync is our breakthrough feature (currently in beta) that lets you use any streaming app — Spotify, YouTube Music, Apple Music — on your own device, and Phone Party will detect the audio and automatically sync all guest phones to match. You don't need to use our in-app music player at all. Your library, your taste, your party.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do guests need to create an account?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            No! Guests never need to sign up or create an account. They simply open a browser, enter the party code (or scan a QR), choose a guest name, and they're instantly synced. We designed the guest experience to have zero friction — the goal is for people to join in seconds.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section class="final-cta section" id="cta" aria-label="Call to action">
+  <div class="container">
+    <h2 class="cta-headline reveal">
+      Ready to Start<br />
+      <span class="text-gradient-neon">the Party?</span>
+    </h2>
+    <p class="cta-sub reveal">
+      Thousands of parties happen every night. Make yours the one everyone remembers.
+    </p>
+    <div class="cta-buttons reveal">
+      <button class="btn btn-primary btn-lg" data-action="create-party" id="mainStartDemoBtn">
+        🎉 Create Your Party
+      </button>
+      <button class="btn btn-secondary btn-lg" data-action="join-party">
+        📱 Join a Party
+      </button>
+      <a href="#demo" class="btn btn-outline btn-lg">
+        ▶ Start Demo Party
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" aria-label="Phone Party home">
+          <div class="logo-icon" aria-hidden="true">🎵</div>
+          <span>Phone Party</span>
+        </a>
+        <p>Turn every phone in the room into one massive sound system. Create, join, and vibe together — no cables, no gear, just music.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="#" class="social-icon" aria-label="Twitter / X">𝕏</a>
+          <a href="#" class="social-icon" aria-label="Instagram">📸</a>
+          <a href="#" class="social-icon" aria-label="TikTok">🎵</a>
+        </div>
+      </div>
+
+      <!-- Product -->
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#addons">Add-ons</a></li>
+          <li><a href="#streaming">Streaming</a></li>
+        </ul>
+      </div>
+
+      <!-- Info -->
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Phone Party · <a href="https://www.phone-party.com" style="color:var(--accent-neon);">phone-party.com</a></p>
+      <p style="color:var(--text-muted);">Made with 🎵 for music lovers everywhere</p>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
