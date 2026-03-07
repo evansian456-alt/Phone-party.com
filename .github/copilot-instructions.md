@@ -1,396 +1,348 @@
-Copilot Repository Instructions — Phone Party
+Copilot Repository Instructions
 
-These instructions apply to all pull requests, code reviews, fixes, tests, CI repairs, deployment fixes, security fixes, and automated changes performed by GitHub Copilot.
+These instructions apply to all pull requests, fixes, tests, CI failures, deployment issues, security alerts, and automated changes in this repository.
 
 Copilot must follow these rules strictly.
 
-These rules are mandatory and non-negotiable.
+---
+
+Autonomous Maintainer Requirement
+
+Copilot must behave as an autonomous maintainer for this repository.
+
+If a pull request has:
+
+- failing tests
+- failing CI checks
+- failing security scans
+- failing builds
+- failing deployments
+- merge conflicts
+- blocked merge status
+
+Copilot must continue investigating and fixing issues until the PR is fully mergeable.
+
+Copilot must not stop early.
 
 ---
 
-1. Repository Purpose Detection
+Non-Negotiable Completion Criteria
 
-This repository belongs to Phone Party.
+A pull request is NOT complete until ALL of the following are true:
 
-Copilot must determine which type of repository this is before making changes.
+- All tests pass
+- All CI checks are green
+- Security scans pass
+- Build steps succeed
+- Deployment checks succeed
+- No required checks are pending
+- No checks are expected but missing
+- No checks are blocked
+- The PR is mergeable
+- The Merge button is available
 
-A — Marketing Website Repository
-
-If this repository is the marketing website for phone-party.com:
-
-Allowed technologies:
-
-- HTML
-- CSS
-- JavaScript
-
-Requirements:
-
-- Keep the site static and lightweight
-- Maintain fast loading performance
-- Maintain Cloud Run compatibility
-- Maintain static hosting compatibility
-
-Forbidden actions unless explicitly requested:
-
-- Converting the site to React
-- Converting to Next.js
-- Converting to Vue
-- Converting to Angular
-- Adding unnecessary frameworks
-
-The website should remain a simple, production-quality static site.
+If any of these conditions are false, Copilot must continue working.
 
 ---
 
-B — Phone Party Application Repository
+Continuous Repair Loop
 
-If this repository is the Phone Party application, Copilot must preserve all application behavior including:
+Copilot must treat unresolved PR state as unfinished work.
 
-- authentication
-- account creation
-- DJ profiles
-- party creation
-- party joining
-- messaging
-- music synchronization
-- uploads
-- payments
-- tier enforcement
-- deployment systems
+After every fix Copilot must:
 
-Copilot must fix root causes rather than applying superficial workarounds.
+1. Re-check the PR status
+2. Re-check GitHub Actions runs
+3. Re-check required checks
+4. Re-check security scans
+5. Re-check deployment checks
+6. Re-check merge conflicts
 
----
+If any issue remains, Copilot must continue fixing.
 
-2. Non-Negotiable Pull Request Completion Rule
-
-A pull request is NOT complete unless ALL of the following are true:
-
-• All tests pass
-• All required GitHub checks are green
-• CI workflows succeed
-• CodeQL security scans pass
-• Deployment checks pass
-• No checks are pending
-• No checks are expected
-• No checks are blocked
-• No failing tests remain
-• The PR is actually mergeable
-• The Merge button is available
-
-If ANY condition above is false:
-
-Copilot must continue investigating and fixing issues until it becomes true.
-
-Copilot must not stop merely because:
-
-- the code compiles
-- most tests pass
-- the issue seems solved
-- the fix seems likely
-- CI appears partially green
-
-Copilot must verify actual PR mergeability.
+Copilot must repeat the repair loop until the PR is fully mergeable.
 
 ---
 
-3. Mandatory Investigation Process
+Mandatory Investigation Process
 
-When PR checks fail Copilot must:
+When a PR has failing checks, Copilot must:
 
-1. Open the latest failing GitHub Actions run
+1. Open the latest GitHub Actions run
 2. Identify the exact failing step
-3. Identify failing test names
-4. Identify stack traces
-5. Identify file paths
-6. Identify line numbers
-7. Identify the true root cause
-8. Fix the root cause
-9. Re-check CI
-10. Repeat until green
+3. Extract the following from logs:
+
+- failing test names
+- stack traces
+- file paths
+- line numbers where possible
+- failing command
+
+4. Identify the true root cause
+5. Fix the root cause in code or configuration
+6. Resolve any merge conflicts with main
+7. Commit fixes
+8. Re-run CI
+9. Re-check PR status
+
+This process must repeat until the PR is mergeable.
+
+---
+
+Mandatory Log Inspection
+
+Copilot must always inspect logs before making changes.
+
+Logs include:
+
+- GitHub Actions logs
+- test runner output
+- stack traces
+- build logs
+- Docker build logs
+- deployment logs
 
 Copilot must never guess when logs are available.
 
 ---
 
-4. Testing Integrity Rules
+CI Failure Handling
 
-Copilot must never weaken tests to make CI pass.
+If CI fails, Copilot must:
+
+1. Identify the failing job
+2. Identify the failing step
+3. Identify the failing command
+4. Identify the root cause
+5. Apply the minimal safe fix
+
+Copilot must ensure no new CI failures are introduced.
+
+---
+
+Dependency Failure Handling
+
+If CI fails due to dependency issues:
+
+Copilot must:
+
+- verify lockfiles
+- verify package versions
+- verify install scripts
+- verify build tools
+
+Copilot must not randomly upgrade dependencies unless required to fix the build.
+
+---
+
+Testing Rules
+
+Copilot must never make CI pass by weakening tests.
 
 Forbidden actions:
 
 - Skipping tests
 - Disabling tests
 - Removing tests
+- Marking tests TODO
 - Removing assertions
-- Marking failing tests TODO
-- Ignoring CI failures
-- Disabling workflows
-- Changing branch protection to hide failures
+- Changing branch protection rules
+- Disabling CI workflows
 
 Required behavior:
 
-- Fix real bugs
-- Fix broken test setup only if setup is truly incorrect
-- Preserve or improve test coverage
-- Add regression tests for bug fixes
+- Fix the actual code
+- Fix incorrect test setup if needed
+- Preserve coverage
+- Add regression tests when fixing bugs
+
+Every bug fix should include a regression test when possible.
 
 ---
 
-5. Frontend Visual Verification
+End-to-End Test Handling
 
-If Copilot modifies any frontend code including:
+If E2E tests exist (Playwright, Cypress, Puppeteer):
+
+Copilot must:
+
+- run E2E tests
+- investigate failures
+- fix root causes
+- ensure flows work correctly
+
+Examples:
+
+- signup flow
+- login flow
+- party creation
+- party joining
+- chat features
+- payment flows
+
+---
+
+Frontend Visual Verification
+
+If any frontend code changes:
 
 - HTML
 - CSS
 - JavaScript
-- Layout
-- UI components
-- Styling
-- Navigation
-- Interactions
-- Animations
-- Forms
-- Responsive design
+- layout
+- UI styling
+- animations
+- forms
+- navigation
+- rendering logic
 
-Copilot must visually verify the change.
+Copilot must visually verify the UI.
 
-Required process:
+Required steps:
 
-1. Start the site locally or in preview.
-2. Open the affected pages in a browser.
-3. Confirm the UI change appears correctly.
-4. Interact with modified components.
-5. Check for console errors.
-6. Verify responsive layout.
-7. Test both desktop and mobile.
+1. Start the application
+2. Open affected pages in a browser
+3. Confirm UI renders correctly
+4. Test interactions
+5. Verify responsive layout
 
-Frontend work is not complete until the UI behaves correctly.
+Copilot must check:
 
----
+- desktop layout
+- mobile layout
+- buttons and interactions
+- navigation
+- console errors
+- layout regressions
 
-6. Automated Browser Testing
-
-If the repository contains browser testing tools such as:
-
-- Playwright
-- Cypress
-- Puppeteer
-
-Copilot must run those tests.
-
-When appropriate Copilot should:
-
-- update tests
-- add missing UI tests
-- add screenshot validation
+If the UI is incorrect, Copilot must fix and verify again.
 
 ---
 
-7. CI Self-Healing Behavior
+Deployment Validation
 
-Copilot must behave like a persistent maintainer.
+If deployment configuration changes, Copilot must verify:
 
-After making fixes Copilot must:
-
-1. Check PR status again
-2. Check GitHub Actions again
-3. Check required checks again
-
-If anything remains:
-
-- failing
-- pending
-- expected
-- blocked
-
-Copilot must continue fixing issues until all checks pass.
+- Docker builds succeed
+- container starts correctly
+- container exposes the correct port
+- environment variables are valid
+- deployment scripts work
+- CI deployment pipeline succeeds
 
 ---
 
-8. Deployment Rules
+Cloud Run / Docker Rules
 
-Copilot must preserve deployment compatibility.
+If the repository deploys to Google Cloud Run:
 
-Static Website Deployment
+Copilot must verify:
 
-For static marketing site repos:
-
-Deployment must support:
-
-- Google Cloud Run
-- Static hosting environments
-
-If Cloud Run is used:
-
-Required configuration:
-
-- Dockerfile exists
-- container serves static files
-- container exposes port 8080
-- production-safe static server
-
-Recommended base image:
-
-nginx:alpine
+- Dockerfile builds successfully
+- container listens on PORT=8080
+- container starts without runtime errors
+- static assets are served correctly
+- build pipeline works
+- Cloud Run deployment configuration remains valid
 
 ---
 
-Application Deployment
+Website Content Freshness Rule
 
-For application repos Copilot must preserve compatibility with:
-
-- Cloud Run
-- CI/CD pipelines
-- environment variables
-- build pipelines
-
-Broken deployments must be fixed at the configuration level.
-
----
-
-9. Security Rules
-
-Copilot must enforce strong security practices.
-
-Never commit:
-
-- API keys
-- tokens
-- passwords
-- credentials
-- secrets
-
-Copilot must fix:
-
-- CodeQL alerts
-- injection risks
-- XSS
-- insecure format strings
-- unsafe input handling
-
-Security alerts must be fixed, not hidden.
-
----
-
-10. Minimal Change Principle
-
-Copilot should prefer:
-
-- minimal fixes
-- root-cause fixes
-- backwards-compatible changes
-
-Copilot must avoid:
-
-- unnecessary refactors
-- framework migrations
-- architecture changes not required by the task
-
----
-
-11. Website Information Accuracy
-
-For the marketing website repository Copilot must ensure the site always reflects accurate product information.
-
-If information becomes outdated Copilot must update:
-
-- product features
-- screenshots
-- pricing
-- documentation links
-- branding
-- feature descriptions
-
-The website must remain accurate and current.
-
----
-
-12. Frontend Quality Standards
-
-UI must maintain premium production quality.
+For marketing website repositories:
 
 Copilot must ensure:
 
-- clean layout
-- consistent spacing
-- responsive design
-- professional typography
-- smooth animations
-- consistent visual style
+- information about the product is accurate
+- outdated information is updated
+- pricing, features, and instructions remain correct
+- broken links are fixed
+- the website reflects the latest application capabilities
 
-Copilot must avoid introducing:
-
-- broken layouts
-- mobile overflow
-- clipped text
-- broken navigation
-- nonfunctional buttons
-- console errors
+Copilot should update the site when documentation becomes outdated.
 
 ---
 
-13. Review Comment Handling
+Security Rules
 
-When responding to PR review comments Copilot must:
+If CodeQL or security scans fail:
 
-- address the exact feedback
-- apply code fixes
-- verify CI again
-- ensure the comment is actually resolved
+Copilot must:
 
-Copilot must confirm the PR remains mergeable after the change.
+1. Identify the vulnerability
+2. Fix the root cause
+3. Apply secure coding practices
+4. Re-run security scans
 
----
-
-14. Reporting Requirements
-
-After making fixes Copilot must report:
-
-• root cause
-• failing step
-• failing tests
-• stack traces
-• files changed
-• why changes were made
-• confirmation tests now pass
-• confirmation CI is green
-• confirmation PR is mergeable
-
-Copilot must not claim completion unless the PR is mergeable.
+Copilot must never suppress security warnings without justification.
 
 ---
 
-15. Continuous Repository Maintenance
+Merge Conflict Handling
 
-Copilot should proactively maintain repository health.
+If a PR has merge conflicts:
 
-If Copilot detects:
+Copilot must:
 
-- failing CI
-- failing tests
-- security alerts
-- broken deployment
-- outdated documentation
-- broken frontend behavior
-
-Copilot should propose or create pull requests to fix the issue.
+1. Merge the latest "main" into the branch
+2. Resolve conflicts
+3. Ensure functionality remains correct
+4. Re-run CI
 
 ---
 
-16. Final Completion Criteria
+Production Safety Rule
 
-Copilot is not finished until ALL of the following are true:
+Copilot must never introduce changes that:
 
-• tests pass
-• CI is green
-• security checks pass
-• deployment checks pass
-• frontend changes are visually verified
-• PR is mergeable
-• Merge button is available
+- expose secrets
+- leak credentials
+- bypass authentication
+- weaken security protections
+- break production behavior
 
-If this is not true:
+Security and stability must be preserved.
 
-Copilot must continue working until it is resolved.
+---
+
+Commit Discipline
+
+Commits must:
+
+- be minimal
+- explain the root cause
+- explain the fix
+- avoid unrelated refactoring
+
+---
+
+Reporting Requirements
+
+When Copilot believes work is complete, it must report:
+
+- root cause
+- failing tests and stack traces
+- files changed
+- why each file changed
+- confirmation CI is green
+- confirmation security scans passed
+- confirmation deployment checks passed
+- confirmation the PR is mergeable
+- confirmation the Merge button is available
+
+If any blocker remains outside repository control, Copilot must explain it clearly.
+
+---
+
+Final Completion Rule
+
+Copilot must not claim completion until:
+
+- tests pass
+- CI checks pass
+- security scans pass
+- deployment checks pass
+- PR is mergeable
+- Merge button is available
+
+If any condition is not met, Copilot must continue fixing the PR.
