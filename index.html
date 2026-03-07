@@ -167,6 +167,27 @@
           <span class="stat-label">% Satisfaction</span>
         </div>
       </div>
+
+      <!-- Platform Compatibility Strip -->
+      <div class="hero-platforms" aria-label="Supported streaming platforms">
+        <span class="hero-platforms-label">Works with</span>
+        <a href="#streaming" class="hero-platform-logo" aria-label="YouTube – view streaming details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 63" width="54" height="38" aria-hidden="true">
+            <path d="M88.1 9.9C87.1 6.4 84.4 3.7 80.9 2.7 73.8.7 45 .7 45 .7S16.2.7 9.1 2.7C5.6 3.7 2.9 6.4 1.9 9.9c-2 7.1-2 21.8-2 21.8s0 14.7 2 21.8c1 3.5 3.7 6.2 7.2 7.2C16.2 62.7 45 62.7 45 62.7s28.8 0 35.9-2c3.5-1 6.2-3.7 7.2-7.2 2-7.1 2-21.8 2-21.8S90.1 17 88.1 9.9z" fill="#FF0000"/>
+            <path d="M36.4 45.1l23.7-13.7-23.7-13.7v27.4z" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#streaming" class="hero-platform-logo" aria-label="Spotify – view streaming details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" width="38" height="38" aria-hidden="true">
+            <path d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.6 121.2c-1.5 2.5-4.8 3.3-7.3 1.8-20-12.2-45.2-15-74.9-8.2-2.8.6-5.7-.9-6.4-3.7-.6-2.8.9-5.7 3.7-6.4 32.5-7.4 60.4-4.2 83 9.5 2.5 1.5 3.3 4.7 1.9 7zm10.3-22.9c-1.9 3.1-5.9 4.1-9 2.2-22.9-14-57.8-18.1-84.8-9.9-3.5 1.1-7.2-.9-8.2-4.4-1.1-3.5.9-7.2 4.4-8.2 30.9-9.4 69.3-4.8 95.5 11.3 3 1.9 4 5.9 2.1 9zm.9-23.8c-27.5-16.3-72.8-17.8-99-9.8-4.2 1.3-8.7-1.1-10-5.3-1.3-4.2 1.1-8.7 5.3-10 30.1-9.1 80.1-7.4 111.6 11.4 3.8 2.3 5 7.2 2.7 11-2.2 3.7-7.1 4.9-10.6 2.7z" fill="#1DB954"/>
+          </svg>
+        </a>
+        <a href="#streaming" class="hero-platform-logo" aria-label="SoundCloud – view streaming details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 28" width="72" height="36" aria-hidden="true">
+            <path d="M2 19.5C2 21.4 3.6 23 5.5 23h38.7a9.8 9.8 0 0 0 9.8-9.8 9.8 9.8 0 0 0-9.8-9.8c-.5 0-1 0-1.4.1A13 13 0 0 0 30.3 4.5a13 13 0 0 0-.5 3c-.8-.4-1.6-.6-2.6-.6a5.5 5.5 0 0 0-5.1 3.5c-1.5-.6-3.2-.5-4.5.3A7.1 7.1 0 0 0 12 15.2a5.5 5.5 0 0 0-4-1.7A5.5 5.5 0 0 0 2.5 19c0 .2-.5.3-.5.5z" fill="#FF5500"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
     <!-- Right: Visual -->
@@ -359,7 +380,7 @@
           <div class="upload-area">
             <div style="font-size:2rem;margin-bottom:8px;">📁</div>
             <div style="font-weight:600;margin-bottom:4px;">Drop your track here</div>
-            <div style="font-size:0.8125rem;color:var(--text-muted);">MP3, WAV, FLAC up to 50MB</div>
+            <div style="font-size:0.8125rem;color:var(--text-muted);">MP3, WAV, FLAC up to 15MB</div>
             <div class="upload-progress" style="margin-top:16px;">
               <div class="upload-progress-fill" id="uploadProgressFill"></div>
             </div>
@@ -623,7 +644,7 @@
           <div class="upload-zone">
             <div class="uz-icon">📁</div>
             <div class="uz-title">Drop your tracks here</div>
-            <div class="uz-sub">MP3, WAV, FLAC · Up to 50MB per file</div>
+            <div class="uz-sub">MP3, WAV, FLAC · Up to 15MB per file</div>
           </div>
           <div class="queue-preview">
             <div class="qp-item active">
@@ -709,17 +730,30 @@
 
     <div class="providers-grid reveal">
       <div class="provider-card youtube">
-        <span class="provider-logo">📺</span>
+        <span class="provider-logo" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 63" width="80" height="56" aria-hidden="true">
+            <path d="M88.1 9.9C87.1 6.4 84.4 3.7 80.9 2.7 73.8.7 45 .7 45 .7S16.2.7 9.1 2.7C5.6 3.7 2.9 6.4 1.9 9.9c-2 7.1-2 21.8-2 21.8s0 14.7 2 21.8c1 3.5 3.7 6.2 7.2 7.2C16.2 62.7 45 62.7 45 62.7s28.8 0 35.9-2c3.5-1 6.2-3.7 7.2-7.2 2-7.1 2-21.8 2-21.8S90.1 17 88.1 9.9z" fill="#FF0000"/>
+            <path d="M36.4 45.1l23.7-13.7-23.7-13.7v27.4z" fill="#fff"/>
+          </svg>
+        </span>
         <h3 class="provider-name">YouTube</h3>
         <p class="provider-desc">Access billions of tracks and music videos. Play any YouTube audio across your party instantly.</p>
       </div>
       <div class="provider-card spotify">
-        <span class="provider-logo">🎧</span>
+        <span class="provider-logo" aria-label="Spotify">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" width="56" height="56" aria-hidden="true">
+            <path d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.6 121.2c-1.5 2.5-4.8 3.3-7.3 1.8-20-12.2-45.2-15-74.9-8.2-2.8.6-5.7-.9-6.4-3.7-.6-2.8.9-5.7 3.7-6.4 32.5-7.4 60.4-4.2 83 9.5 2.5 1.5 3.3 4.7 1.9 7zm10.3-22.9c-1.9 3.1-5.9 4.1-9 2.2-22.9-14-57.8-18.1-84.8-9.9-3.5 1.1-7.2-.9-8.2-4.4-1.1-3.5.9-7.2 4.4-8.2 30.9-9.4 69.3-4.8 95.5 11.3 3 1.9 4 5.9 2.1 9zm.9-23.8c-27.5-16.3-72.8-17.8-99-9.8-4.2 1.3-8.7-1.1-10-5.3-1.3-4.2 1.1-8.7 5.3-10 30.1-9.1 80.1-7.4 111.6 11.4 3.8 2.3 5 7.2 2.7 11-2.2 3.7-7.1 4.9-10.6 2.7z" fill="#1DB954"/>
+          </svg>
+        </span>
         <h3 class="provider-name">Spotify</h3>
         <p class="provider-desc">Connect your Spotify Premium and play from your playlists, Discover Weekly, and curated party mixes.</p>
       </div>
       <div class="provider-card soundcloud">
-        <span class="provider-logo">☁️</span>
+        <span class="provider-logo" aria-label="SoundCloud">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 28" width="80" height="40" aria-hidden="true">
+            <path d="M2 19.5C2 21.4 3.6 23 5.5 23h38.7a9.8 9.8 0 0 0 9.8-9.8 9.8 9.8 0 0 0-9.8-9.8c-.5 0-1 0-1.4.1A13 13 0 0 0 30.3 4.5a13 13 0 0 0-.5 3c-.8-.4-1.6-.6-2.6-.6a5.5 5.5 0 0 0-5.1 3.5c-1.5-.6-3.2-.5-4.5.3A7.1 7.1 0 0 0 12 15.2a5.5 5.5 0 0 0-4-1.7A5.5 5.5 0 0 0 2.5 19c0 .2-.5.3-.5.5z" fill="#FF5500"/>
+          </svg>
+        </span>
         <h3 class="provider-name">SoundCloud</h3>
         <p class="provider-desc">Tap into underground tracks, DJ mixes, and exclusive drops from creators worldwide.</p>
       </div>
@@ -831,7 +865,7 @@
           <div class="dj-feature-icon">🎫</div>
           <div>
             <div class="dj-feature-title">Party Pass Integration</div>
-            <div class="dj-feature-desc">Unlock unlimited phones, priority sync, crowd energy tracking, and premium DJ tools with a Party Pass.</div>
+            <div class="dj-feature-desc">Upgrade to Party Pass (up to 4 phones, 2-hour session) or Pro Monthly (up to 10 phones, unlimited time) for full DJ tools and Official App Sync.</div>
           </div>
         </div>
         <div class="dj-feature">
@@ -976,16 +1010,15 @@
       <div class="pricing-card reveal reveal-delay-1">
         <div class="plan-name">Free</div>
         <div class="plan-price">
-          <span class="currency">$</span>0
+          <span class="currency">£</span>0
         </div>
         <div class="plan-price-sub">Forever free · No credit card</div>
-        <p class="plan-desc">Perfect for small gatherings and trying out Phone Party with your crew.</p>
+        <p class="plan-desc">Perfect for trying out Phone Party. Get two friends on sync in minutes, no card needed.</p>
         <ul class="plan-features">
-          <li class="plan-feature"><span class="check-icon">✓</span> Up to 5 phones per party</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Music upload (50MB/file)</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Basic queue management</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Real-time reactions</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Standard audio quality</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Up to 2 phones per party</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> 30-minute session</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Chat &amp; emoji reactions</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Audio visualizer</li>
           <li class="plan-feature"><span class="check-icon">✓</span> Party code &amp; QR join</li>
         </ul>
         <a href="#demo" class="btn btn-secondary" style="width:100%;justify-content:center;">
@@ -998,19 +1031,19 @@
         <div class="popular-badge">⭐ Most Popular</div>
         <div class="plan-name">Party Pass</div>
         <div class="plan-price">
-          <span class="currency">$</span>4<span style="font-size:1.5rem;font-weight:500;">.99</span>
+          <span class="currency">£</span>3<span style="font-size:1.5rem;font-weight:500;">.99</span>
         </div>
         <div class="plan-price-sub">Per party · One-time unlock</div>
-        <p class="plan-desc">Unlock the full experience for a single epic party. Everything you need, one night only.</p>
+        <p class="plan-desc">Perfect for small parties — 2 hours of fun with up to 4 phones, chat, and reactions.</p>
         <ul class="plan-features">
-          <li class="plan-feature"><span class="check-icon">✓</span> <strong>Unlimited phones</strong></li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Premium audio quality</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Crowd Energy Meter</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> DJ Moments capture</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Live party chat</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Official App Sync (beta)</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Priority sync engine</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Visual party themes</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> <strong>Up to 4 phones</strong></li>
+          <li class="plan-feature"><span class="check-icon">✓</span> 2-hour session</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Chat + emoji reactions</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Guest quick replies</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> DJ quick message buttons</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Auto party prompts</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Official App Sync</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> No ads</li>
         </ul>
         <button class="btn btn-primary" style="width:100%;justify-content:center;" data-action="create-party">
           🎉 Get Party Pass
@@ -1021,18 +1054,19 @@
       <div class="pricing-card reveal reveal-delay-2">
         <div class="plan-name">Pro Monthly</div>
         <div class="plan-price">
-          <span class="currency">$</span>14<span style="font-size:1.5rem;font-weight:500;">.99</span>
+          <span class="currency">£</span>9<span style="font-size:1.5rem;font-weight:500;">.99</span>
         </div>
         <div class="plan-price-sub">Per month · Cancel anytime</div>
-        <p class="plan-desc">For the dedicated party host. Unlimited parties, advanced analytics, and total control every month.</p>
+        <p class="plan-desc">For the dedicated party host. Unlimited parties, 10 phones, advanced analytics, and total control every month.</p>
         <ul class="plan-features">
-          <li class="plan-feature"><span class="check-icon">✓</span> Everything in Party Pass</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Advanced analytics dashboard</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Custom party themes</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Unlimited DJ library</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Priority sync (lowest latency)</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Early access to new features</li>
-          <li class="plan-feature"><span class="check-icon">✓</span> Pro DJ title badge</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> <strong>Up to 10 phones</strong></li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Unlimited time</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Custom messages</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> All reactions</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> No ads</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Advanced analytics</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Priority support</li>
+          <li class="plan-feature"><span class="check-icon">✓</span> Official App Sync</li>
         </ul>
         <button class="btn btn-outline" style="width:100%;justify-content:center;">
           🚀 Go Pro
@@ -1058,25 +1092,25 @@
         <div class="addon-icon">🎨</div>
         <h3 class="addon-name">Visual Packs</h3>
         <p class="addon-desc">Custom animated backgrounds, color themes, and screen visualizers that pulse to the music.</p>
-        <div class="addon-price">From $1.99</div>
+        <div class="addon-price">From £2.99</div>
       </div>
       <div class="addon-card reveal reveal-delay-2">
         <div class="addon-icon">👑</div>
         <h3 class="addon-name">DJ Titles</h3>
-        <p class="addon-desc">Show off your status with exclusive DJ badges — Legend, Headliner, Rockstar, and more.</p>
-        <div class="addon-price">From $0.99</div>
+        <p class="addon-desc">Show off your status with exclusive DJ badges — Rising DJ, Club DJ, Superstar, Legend, and more.</p>
+        <div class="addon-price">From £0.99</div>
       </div>
       <div class="addon-card reveal reveal-delay-3">
         <div class="addon-icon">⏱️</div>
         <h3 class="addon-name">Party Extensions</h3>
-        <p class="addon-desc">Keep the party going beyond the standard limit. Add 1 hour, 3 hours, or go all night.</p>
-        <div class="addon-price">From $1.49</div>
+        <p class="addon-desc">Keep the party going — add 30 minutes or boost your phone limit by 5 with a single tap.</p>
+        <div class="addon-price">From £0.99</div>
       </div>
       <div class="addon-card reveal reveal-delay-4">
-        <div class="addon-icon">🔓</div>
-        <h3 class="addon-name">Party Unlocks</h3>
-        <p class="addon-desc">Unlock special features mid-party: guest voting, song requests, crowd control mode, and more.</p>
-        <div class="addon-price">From $0.99</div>
+        <div class="addon-icon">🎊</div>
+        <h3 class="addon-name">Hype Effects</h3>
+        <p class="addon-desc">Trigger single-use party moments — confetti blasts, laser shows, crowd roars, and fireworks.</p>
+        <div class="addon-price">From £0.49</div>
       </div>
     </div>
   </div>
@@ -1222,7 +1256,7 @@
         </button>
         <div class="faq-answer" role="region">
           <div class="faq-answer-inner">
-            Free parties support up to 5 phones. With a Party Pass, you get unlimited phones per party — we've had parties with 200+ phones syncing simultaneously. Our sync engine is built to scale, so whether it's 5 people or 500, it stays tight.
+            Free parties support up to 2 phones. With a Party Pass (£3.99) you can sync up to 4 phones for a 2-hour session. Pro Monthly (£9.99/month) scales up to 10 phones with unlimited party time. Our sync engine is built to handle it all — whether it's 2 people or 10, it stays tight.
           </div>
         </div>
       </div>
@@ -1258,7 +1292,7 @@
         </button>
         <div class="faq-answer" role="region">
           <div class="faq-answer-inner">
-            Party Pass is a one-time, per-party upgrade ($4.99) that unlocks the full Phone Party experience for a single event. You get unlimited phones, premium audio quality, crowd energy tracking, DJ Moments, live chat, Official App Sync (beta), and priority sync. It's designed for when you want to go all out for one night without a subscription.
+            Party Pass is a one-time, per-party upgrade (£3.99) that gives you up to 4 phones on sync for a 2-hour session. You get chat and emoji reactions, guest quick replies, DJ quick message buttons, auto party prompts, Official App Sync, and no ads. It's designed for small parties where you want the full experience for one night without a subscription.
           </div>
         </div>
       </div>
