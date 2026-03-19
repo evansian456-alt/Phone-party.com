@@ -5,6 +5,7 @@ RUN apk add --no-cache gettext
 
 # Copy static files
 COPY index.html style.css script.js /usr/share/nginx/html/
+COPY public/ /usr/share/nginx/html/public/
 
 # Copy nginx config template and startup script
 COPY nginx.conf.template /etc/nginx/conf.d/nginx.conf.template
