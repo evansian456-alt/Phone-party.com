@@ -674,6 +674,52 @@ function showToast(message, duration = 3000) {
 }
 
 /* ============================================================
+   13a. Start the Party button – auth-aware routing
+   ============================================================ */
+function isLoggedIn() {
+  // Check common auth token keys in localStorage and sessionStorage
+  const keys = ['authToken', 'auth_token', 'token', 'user', 'session', 'accessToken'];
+  return keys.some(k => localStorage.getItem(k) || sessionStorage.getItem(k));
+}
+
+function getStartPartyDestination() {
+  return isLoggedIn() ? '/app' : '/signup';
+}
+
+function initStartPartyButtons() {
+  // Collect all "Start the Party" CTA buttons.
+  // Use data-start-party attribute (preferred) or fall back to initial href.
+  // We mark each button with data-start-party so re-runs are safe.
+  const candidates = [
+    '#heroStartPartyBtn',
+    '.nav-actions a[href="/signup"]',
+    '.mobile-menu a[href="/signup"]',
+    '.cta-buttons a[href="/signup"]',
+  ];
+
+  candidates.forEach(sel => {
+    $$(sel).forEach(btn => {
+      // Tag the button so repeated calls don't re-bind listeners
+      if (btn.dataset.startParty) return;
+      btn.dataset.startParty = '1';
+
+      // Update href so middle-click / right-click also works correctly
+      btn.href = getStartPartyDestination();
+
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        window.location.href = getStartPartyDestination();
+      });
+    });
+  });
+
+  // Also handle any button already tagged (href may have changed since last call)
+  $$('[data-start-party]').forEach(btn => {
+    btn.href = getStartPartyDestination();
+  });
+}
+
+/* ============================================================
    13. Create Party / Join Party button handlers
    ============================================================ */
 function initPartyButtons() {
