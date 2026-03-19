@@ -1372,6 +1372,19 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
 }
 
+/* Large icon display (used in demo panels and feature highlights) */
+.icon-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.icon-display svg { width: 36px; height: 36px; stroke: #a855f7; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+
+/* Extra-large icon display (40px, used for section feature illustrations) */
+.icon-display--lg svg { width: 40px; height: 40px; }
+
 .feature-title {
   font-size: 1rem;
   font-weight: 700;
