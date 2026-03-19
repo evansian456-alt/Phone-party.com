@@ -737,6 +737,9 @@ function initDemoTabs() {
    Init – run everything when DOM ready
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialise Lucide icons (replace all data-lucide elements with SVG)
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
   initNav();
   initSmoothScroll();
   initScrollReveal();
@@ -754,6 +757,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial toast on load (subtle)
   setTimeout(() => {
-    showToast('🎵 Welcome to Phone Party!', 4000);
+    showToast('Welcome to Phone Party!', 4000);
   }, 1500);
 });

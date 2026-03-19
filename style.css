@@ -790,7 +790,10 @@ h1, h2, h3, h4, h5, h6 {
   animation: float-card-anim 5s ease-in-out infinite;
 }
 
-.float-card .fc-icon { font-size: 1.1rem; }
+.float-card .fc-icon { display: flex; align-items: center; justify-content: center; }
+.float-card .fc-icon svg { width: 18px; height: 18px; stroke: #a855f7; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.float-card-2 .fc-icon svg { stroke: var(--accent-secondary); }
+.float-card-3 .fc-icon svg { stroke: var(--accent-green); }
 
 .float-card-1 {
   top: 20px;
@@ -991,11 +994,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .phone-join-icon {
-  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.2);
   opacity: 0;
   transform: scale(0) translateY(20px);
   transition: all 0.4s var(--transition-spring);
 }
+
+.phone-join-icon svg { width: 18px; height: 18px; stroke: #a855f7; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
 .phone-join-icon.visible {
   opacity: 1;
@@ -1176,10 +1188,11 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
   flex-shrink: 0;
   animation: spin-disc 3s linear infinite paused;
 }
+
+.np-disc svg { width: 22px; height: 22px; stroke: #fff; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
 .now-playing-bar.playing .np-disc { animation-play-state: running; }
 
@@ -1269,7 +1282,9 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.1);
 }
 
-.step-icon { font-size: 1.5rem; }
+.step-icon { display: flex; align-items: center; justify-content: center; }
+.step-icon svg { width: 28px; height: 28px; stroke: var(--accent-neon); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.step-card:hover .step-icon svg { stroke: #fff; }
 .step-title {
   font-size: 1.0625rem;
   font-weight: 700;
@@ -1320,11 +1335,41 @@ h1, h2, h3, h4, h5, h6 {
 
 .feature-card:hover::before { opacity: 1; }
 
+/* ============================================================
+   Icon System – reusable Lucide SVG icon wrapper
+   ============================================================ */
+.icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.12), inset 0 1px 0 rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.icon-wrap svg {
+  width: 24px;
+  height: 24px;
+  stroke: #a855f7;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.feature-card:hover .icon-wrap {
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: 0 0 28px rgba(124, 58, 237, 0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
 .feature-icon {
-  font-size: 2rem;
   margin-bottom: 16px;
-  display: block;
-  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.5));
+  display: flex;
 }
 
 .feature-title {
@@ -1399,7 +1444,8 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(124,58,237,0.03);
 }
 
-.upload-zone .uz-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.upload-zone .uz-icon { display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.upload-zone .uz-icon svg { width: 36px; height: 36px; stroke: #a855f7; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 .upload-zone .uz-title { font-weight: 600; margin-bottom: 6px; }
 .upload-zone .uz-sub { font-size: 0.8125rem; color: var(--text-muted); }
 
@@ -1433,9 +1479,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
   flex-shrink: 0;
 }
+.mf-icon svg { width: 22px; height: 22px; stroke: #a855f7; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 .mf-title { font-weight: 600; margin-bottom: 4px; }
 .mf-desc { font-size: 0.875rem; color: var(--text-secondary); }
 
@@ -1623,9 +1669,10 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
   flex-shrink: 0;
 }
+
+.dj-feature-icon svg { width: 22px; height: 22px; stroke: #a855f7; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
 .dj-feature-title { font-weight: 600; margin-bottom: 4px; }
 .dj-feature-desc { font-size: 0.875rem; color: var(--text-secondary); }
@@ -1669,8 +1716,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
 }
+
+.chat-avatar svg { width: 16px; height: 16px; stroke: #fff; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
 .chat-title { font-weight: 600; font-size: 0.9375rem; }
 .chat-subtitle { font-size: 0.75rem; color: var(--text-muted); }
@@ -1853,16 +1901,17 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.625rem;
-  color: var(--accent-green);
   flex-shrink: 0;
 }
+
+.check-icon svg { width: 11px; height: 11px; stroke: var(--accent-green); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
 .pricing-card.popular .check-icon {
   background: rgba(124,58,237,0.15);
   border-color: rgba(124,58,237,0.3);
-  color: var(--accent-neon);
 }
+
+.pricing-card.popular .check-icon svg { stroke: var(--accent-neon); }
 
 /* ============================================================
    Add-ons
@@ -1895,7 +1944,18 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 30px var(--glow-violet);
 }
 
-.addon-icon { font-size: 2.5rem; margin-bottom: 14px; }
+.addon-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.addon-icon svg { width: 24px; height: 24px; stroke: #a855f7; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 .addon-name { font-weight: 700; margin-bottom: 8px; }
 .addon-desc { font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 16px; }
 .addon-price { font-family: var(--font-display); font-weight: 700; color: var(--accent-neon); }
@@ -2056,7 +2116,17 @@ h1, h2, h3, h4, h5, h6 {
   gap: 6px;
 }
 
-.reward-icon { font-size: 2rem; }
+.reward-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reward-icon svg { width: 22px; height: 22px; stroke: #a855f7; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 .reward-label { font-size: 0.875rem; color: var(--text-secondary); }
 .reward-value { font-weight: 700; color: var(--accent-neon); }
 
@@ -2231,10 +2301,12 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
   transition: all var(--transition-base);
   cursor: pointer;
 }
+
+.social-icon svg { width: 18px; height: 18px; stroke: var(--text-secondary); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.social-icon:hover svg { stroke: var(--accent-neon); }
 
 .social-icon:hover {
   background: rgba(124,58,237,0.15);
