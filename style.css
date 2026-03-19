@@ -998,9 +998,9 @@ h1, h2, h3, h4, h5, h6 {
   left: 16px;
   top: 55px;
   transform: rotate(-8deg) perspective(600px) rotateY(6deg);
-  animation: float-phone-1 4s ease-in-out infinite;
   z-index: 2;
   opacity: 0;
+  /* appear: 0.7s duration + 0.2s delay = ends at 0.9s; float starts at 0.9s delay */
   animation: phone-appear 0.7s 0.2s ease forwards, float-phone-1 4s 0.9s ease-in-out infinite;
 }
 
@@ -1017,6 +1017,7 @@ h1, h2, h3, h4, h5, h6 {
     inset 0 1px 0 rgba(255,255,255,0.15);
   border-color: rgba(168, 85, 247, 0.5);
   opacity: 0;
+  /* appear: 0.7s duration + 0s delay = ends at 0.7s; float starts at 0.7s delay */
   animation: phone-appear-center 0.7s 0s ease forwards, float-phone-2 4.5s 0.7s ease-in-out infinite;
 }
 
@@ -1024,9 +1025,9 @@ h1, h2, h3, h4, h5, h6 {
   right: 16px;
   top: 55px;
   transform: rotate(8deg) perspective(600px) rotateY(-6deg);
-  animation: float-phone-3 5s ease-in-out infinite;
   z-index: 2;
   opacity: 0;
+  /* appear: 0.7s duration + 0.35s delay = ends at 1.05s; float starts at 1.05s delay */
   animation: phone-appear 0.7s 0.35s ease forwards, float-phone-3 5s 1.05s ease-in-out infinite;
 }
 
@@ -3417,6 +3418,7 @@ h1, h2, h3, h4, h5, h6 {
   66%       { transform: translate(-20px, 20px) scale(0.9); }
 }
 
+/* 28px vertical offset: enough to feel like the phone rises into place */
 @keyframes phone-appear {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }

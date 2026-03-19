@@ -700,27 +700,31 @@ function initPartyButtons() {
    13b. Start the Party – smart auth routing
    ============================================================ */
 function getAuthToken() {
-  // Check localStorage for common auth token keys
+  // Check localStorage/sessionStorage for common auth token keys
   const keys = ['token', 'authToken', 'accessToken', 'jwt', 'userToken', 'phonePartyToken', 'session'];
   for (const key of keys) {
     try {
-      if (localStorage.getItem(key)) return localStorage.getItem(key);
-      if (sessionStorage.getItem(key)) return sessionStorage.getItem(key);
-    } catch (_) { /* storage access denied */ }
+      const localVal = localStorage.getItem(key);
+      if (localVal) return localVal;
+      const sessionVal = sessionStorage.getItem(key);
+      if (sessionVal) return sessionVal;
+    } catch (_) { /* storage access denied in some contexts */ }
   }
   // Check cookies for common session/auth cookie names
   const cookieKeys = new Set(['token', 'authToken', 'session', 'sessionId', 'access_token', 'auth', 'user']);
   const cookies = document.cookie.split(';');
   for (const cookie of cookies) {
-    const name = cookie.split('=')[0].trim();
-    if (cookieKeys.has(name)) return cookie;
+    const eqIdx = cookie.indexOf('=');
+    if (eqIdx === -1) continue;
+    const name = cookie.slice(0, eqIdx).trim();
+    if (cookieKeys.has(name)) return cookie.slice(eqIdx + 1).trim();
   }
   return null;
 }
 
 function initStartPartyButtons() {
-  // All "Start the Party" links that point to /signup
-  const startLinks = $$('a[href="/signup"]');
+  // All "Start the Party" links that point to /signup (including those with query params)
+  const startLinks = $$('a[href^="/signup"]');
   startLinks.forEach(link => {
     link.addEventListener('click', e => {
       const token = getAuthToken();
