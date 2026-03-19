@@ -14,13 +14,13 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
    1. Navigation – scroll blur + active links + mobile menu
    ============================================================ */
 function initNav() {
-  const nav = $('.nav');
+  const siteHeader = $('.site-header');
   const hamburger = $('.hamburger');
   const mobileMenu = $('.mobile-menu');
 
   // Scroll state
   const onScroll = () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
+    siteHeader.classList.toggle('scrolled', window.scrollY > 20);
 
     // Active link highlighting
     const sections = $$('section[id]');
