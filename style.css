@@ -108,6 +108,56 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
+   Icon Wrapper – Reusable Premium Icon Component
+   ============================================================ */
+.icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.22) 0%, rgba(6,182,212,0.08) 100%);
+  border: 1px solid rgba(124,58,237,0.28);
+  box-shadow: 0 0 18px rgba(124,58,237,0.22), 0 2px 8px rgba(0,0,0,0.35);
+  flex-shrink: 0;
+  transition: box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.icon-wrap svg {
+  width: 24px;
+  height: 24px;
+  stroke: #a855f7;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
+}
+
+/* Small variant – 44px container */
+.icon-wrap--sm {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.icon-wrap--sm svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Medium variant – 48px container */
+.icon-wrap--md {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+}
+
+.icon-wrap--md svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ============================================================
    Layout Utilities
    ============================================================ */
 .container {
@@ -790,7 +840,22 @@ h1, h2, h3, h4, h5, h6 {
   animation: float-card-anim 5s ease-in-out infinite;
 }
 
-.float-card .fc-icon { font-size: 1.1rem; }
+.float-card .fc-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.float-card .fc-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent-neon);
+  stroke-width: 2;
+  fill: none;
+  display: block;
+}
 
 .float-card-1 {
   top: 20px;
@@ -991,10 +1056,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .phone-join-icon {
-  font-size: 1.75rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transform: scale(0) translateY(20px);
   transition: all 0.4s var(--transition-spring);
+}
+
+.phone-join-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #a855f7;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
 }
 
 .phone-join-icon.visible {
@@ -1176,9 +1257,17 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
   flex-shrink: 0;
   animation: spin-disc 3s linear infinite paused;
+}
+
+.np-disc svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
 }
 
 .now-playing-bar.playing .np-disc { animation-play-state: running; }
@@ -1269,7 +1358,19 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.1);
 }
 
-.step-icon { font-size: 1.5rem; }
+.step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
+}
 .step-title {
   font-size: 1.0625rem;
   font-weight: 700;
@@ -1320,17 +1421,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .feature-card:hover::before { opacity: 1; }
 
-.feature-icon {
-  font-size: 2rem;
-  margin-bottom: 16px;
-  display: block;
-  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.5));
+.feature-card .icon-wrap {
+  margin-bottom: 20px;
+}
+
+.feature-card:hover .icon-wrap {
+  box-shadow: 0 0 28px rgba(124,58,237,0.4), 0 2px 12px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, rgba(124,58,237,0.32) 0%, rgba(6,182,212,0.14) 100%);
 }
 
 .feature-title {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .feature-desc {
@@ -1399,7 +1502,25 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(124,58,237,0.03);
 }
 
-.upload-zone .uz-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.upload-zone .uz-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.08));
+  border: 1px solid rgba(124,58,237,0.25);
+}
+.upload-zone .uz-icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: #a855f7;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
+}
 .upload-zone .uz-title { font-weight: 600; margin-bottom: 6px; }
 .upload-zone .uz-sub { font-size: 0.8125rem; color: var(--text-muted); }
 
@@ -1427,14 +1548,22 @@ h1, h2, h3, h4, h5, h6 {
 .mf-icon {
   width: 48px;
   height: 48px;
-  border-radius: var(--radius-md);
-  background: rgba(124,58,237,0.12);
-  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 13px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.08));
+  border: 1px solid rgba(124,58,237,0.25);
+  box-shadow: 0 0 14px rgba(124,58,237,0.18), 0 2px 6px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
   flex-shrink: 0;
+}
+.mf-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: #a855f7;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
 }
 .mf-title { font-weight: 600; margin-bottom: 4px; }
 .mf-desc { font-size: 0.875rem; color: var(--text-secondary); }
@@ -1618,13 +1747,22 @@ h1, h2, h3, h4, h5, h6 {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(168,85,247,0.1));
-  border: 1px solid rgba(124,58,237,0.2);
+  background: linear-gradient(135deg, rgba(124,58,237,0.22), rgba(168,85,247,0.1));
+  border: 1px solid rgba(124,58,237,0.25);
+  box-shadow: 0 0 12px rgba(124,58,237,0.16), 0 2px 6px rgba(0,0,0,0.28);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
   flex-shrink: 0;
+}
+
+.dj-feature-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #a855f7;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
 }
 
 .dj-feature-title { font-weight: 600; margin-bottom: 4px; }
@@ -1853,15 +1991,25 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.625rem;
-  color: var(--accent-green);
   flex-shrink: 0;
+}
+
+.check-icon svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--accent-green);
+  stroke-width: 2.5;
+  fill: none;
+  display: block;
 }
 
 .pricing-card.popular .check-icon {
   background: rgba(124,58,237,0.15);
   border-color: rgba(124,58,237,0.3);
-  color: var(--accent-neon);
+}
+
+.pricing-card.popular .check-icon svg {
+  stroke: var(--accent-neon);
 }
 
 /* ============================================================
@@ -1895,7 +2043,26 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 30px var(--glow-violet);
 }
 
-.addon-icon { font-size: 2.5rem; margin-bottom: 14px; }
+.addon-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.08));
+  border: 1px solid rgba(124,58,237,0.25);
+  box-shadow: 0 0 16px rgba(124,58,237,0.2), 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.addon-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: #a855f7;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
+}
 .addon-name { font-weight: 700; margin-bottom: 8px; }
 .addon-desc { font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 16px; }
 .addon-price { font-family: var(--font-display); font-weight: 700; color: var(--accent-neon); }
@@ -2056,7 +2223,26 @@ h1, h2, h3, h4, h5, h6 {
   gap: 6px;
 }
 
-.reward-icon { font-size: 2rem; }
+.reward-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.08));
+  border: 1px solid rgba(124,58,237,0.25);
+  box-shadow: 0 0 14px rgba(124,58,237,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.reward-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: #a855f7;
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
+}
 .reward-label { font-size: 0.875rem; color: var(--text-secondary); }
 .reward-value { font-weight: 700; color: var(--accent-neon); }
 
@@ -2234,6 +2420,20 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
   transition: all var(--transition-base);
   cursor: pointer;
+}
+
+.social-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-secondary);
+  stroke-width: 1.75;
+  fill: none;
+  display: block;
+  transition: stroke var(--transition-base);
+}
+
+.social-icon:hover svg {
+  stroke: var(--accent-neon);
 }
 
 .social-icon:hover {
