@@ -258,6 +258,8 @@ function resetDemoUI() {
   // Reset now playing bar
   const npBar = $('.now-playing-bar');
   if (npBar) npBar.classList.remove('playing');
+  // Reset sync phone entrance state
+  $$('.sp-phone-enter').forEach(el => el.classList.remove('visible'));
   // Reset caption
   setDemoCaption('▶', 'Click "Play Demo" to begin the walkthrough');
 }
@@ -370,6 +372,11 @@ async function stepStayInSync() {
   activateDemoStep(4);
   demoState.currentStep = 5;
   setDemoCaption('🔄', 'Stay perfectly in sync — every phone plays the exact same moment');
+
+  // Trigger staggered entrance for sync phones
+  $$('.sp-phone-enter').forEach(el => {
+    requestAnimationFrame(() => el.classList.add('visible'));
+  });
 
   await sleep(600);
 
@@ -734,6 +741,48 @@ function initPartyButtons() {
 /* ============================================================
    14. Feature Cards – stagger entrance
    ============================================================ */
+
+/* ============================================================
+   13b. Start the Party – smart auth routing
+   ============================================================ */
+function getAuthToken() {
+  // Check localStorage/sessionStorage for common auth token keys
+  const keys = ['token', 'authToken', 'accessToken', 'jwt', 'userToken', 'phonePartyToken', 'session'];
+  for (const key of keys) {
+    try {
+      const localVal = localStorage.getItem(key);
+      if (localVal) return localVal;
+      const sessionVal = sessionStorage.getItem(key);
+      if (sessionVal) return sessionVal;
+    } catch (_) { /* storage access denied in some contexts */ }
+  }
+  // Check cookies for common session/auth cookie names
+  const cookieKeys = new Set(['token', 'authToken', 'session', 'sessionId', 'access_token', 'auth', 'user']);
+  const cookies = document.cookie.split(';');
+  for (const cookie of cookies) {
+    const eqIdx = cookie.indexOf('=');
+    if (eqIdx === -1) continue;
+    const name = cookie.slice(0, eqIdx).trim();
+    if (cookieKeys.has(name)) return cookie.slice(eqIdx + 1).trim();
+  }
+  return null;
+}
+
+function initStartPartyButtons() {
+  // All "Start the Party" links that point to /signup (including those with query params)
+  const startLinks = $$('a[href^="/signup"]');
+  startLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      const token = getAuthToken();
+      if (token) {
+        e.preventDefault();
+        window.location.href = '/app';
+      }
+      // No token → let default href="/signup" navigate naturally
+    });
+  });
+}
+
 function initFeatureCards() {
   const cards = $$('.feature-card');
   const observer = new IntersectionObserver(

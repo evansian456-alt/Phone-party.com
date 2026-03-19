@@ -197,7 +197,7 @@
     <!-- Right: Visual -->
     <div class="hero-visual" aria-hidden="true">
       <div class="phones-container">
-        <!-- Phone 1 – Guest device -->
+        <!-- Phone 1 – Guest joining view -->
         <div class="phone-mockup phone-mockup-1">
           <div class="phone-side-btn phone-side-btn--vol-up"></div>
           <div class="phone-side-btn phone-side-btn--vol-down"></div>
@@ -205,26 +205,29 @@
           <div class="phone-screen">
             <div class="phone-island"></div>
             <div class="phone-status">
-              <span>9:41</span><span class="phone-status-icons">▲▲ ▊</span>
+              <span class="pst-time">9:41</span>
+              <span class="pst-icons">▲▲▲ ▮▮</span>
             </div>
-            <div class="phone-screen-content">
-              <div class="phone-video-thumb">
-                <div class="phone-video-play">▶</div>
+            <div class="phone-app">
+              <div class="pa-header">Phone Party</div>
+              <div class="pa-party-join">
+                <div class="pa-code-label">Joining</div>
+                <div class="pa-code-val">PP-4K9M</div>
+                <div class="pa-avatars">
+                  <div class="pa-avatar" style="background:#7c3aed">A</div>
+                  <div class="pa-avatar" style="background:#06b6d4">M</div>
+                  <div class="pa-avatar" style="background:#10b981">+7</div>
+                </div>
               </div>
-              <div class="phone-track-name">Party Mix 2024 🔥</div>
-              <div class="mini-waveform">
-                <div class="mini-bar" style="height:8px"></div>
-                <div class="mini-bar" style="height:14px"></div>
-                <div class="mini-bar" style="height:10px"></div>
-                <div class="mini-bar" style="height:16px"></div>
-                <div class="mini-bar" style="height:12px"></div>
+              <div class="pa-sync-row">
+                <div class="pa-sync-dot"></div>
+                <span>Synced</span>
               </div>
-              <div class="phone-sync-badge">✓ Synced</div>
             </div>
           </div>
         </div>
 
-        <!-- Phone 2 (center, main) – DJ device -->
+        <!-- Phone 2 (center, main) – DJ / Now Playing -->
         <div class="phone-mockup phone-mockup-2">
           <div class="phone-side-btn phone-side-btn--vol-up"></div>
           <div class="phone-side-btn phone-side-btn--vol-down"></div>
@@ -232,33 +235,33 @@
           <div class="phone-screen">
             <div class="phone-island"></div>
             <div class="phone-status">
-              <span>9:41</span><span class="phone-status-icons">▲▲ ▊</span>
+              <span class="pst-time">9:41</span>
+              <span class="pst-icons">▲▲▲ ▮▮</span>
             </div>
-            <div class="phone-screen-content phone-screen-content--dj">
-              <div class="phone-dj-label">🎧 DJ Mode</div>
-              <div class="phone-video-thumb phone-video-thumb--main">
-                <div class="phone-video-play">▶</div>
+            <div class="phone-app">
+              <div class="pa-header">Now Playing</div>
+              <div class="pa-album">
+                <div class="pa-album-inner">
+                  <div class="pa-album-bars">
+                    <div class="mini-bar" style="height:10px"></div>
+                    <div class="mini-bar" style="height:18px"></div>
+                    <div class="mini-bar" style="height:14px"></div>
+                    <div class="mini-bar" style="height:22px"></div>
+                    <div class="mini-bar" style="height:16px"></div>
+                    <div class="mini-bar" style="height:12px"></div>
+                  </div>
+                </div>
               </div>
-              <div class="phone-track-name">Blinding Lights ✦</div>
-              <div class="mini-waveform">
-                <div class="mini-bar" style="height:10px"></div>
-                <div class="mini-bar" style="height:20px"></div>
-                <div class="mini-bar" style="height:14px"></div>
-                <div class="mini-bar" style="height:22px"></div>
-                <div class="mini-bar" style="height:17px"></div>
-                <div class="mini-bar" style="height:12px"></div>
-              </div>
-              <div class="phone-guests-row">
-                <span class="phone-guest-dot"></span>
-                <span class="phone-guest-dot"></span>
-                <span class="phone-guest-dot"></span>
-                <span class="phone-guests-text">10 phones synced</span>
-              </div>
+              <div class="pa-song-title">Blinding Lights</div>
+              <div class="pa-song-artist">The Weeknd</div>
+              <div class="pa-progress-bar"><div class="pa-progress-fill" style="width:42%"></div></div>
+              <div class="pa-controls">⏮ &nbsp; ▶ &nbsp; ⏭</div>
+              <div class="pa-synced-tag">⚡ 12 phones synced</div>
             </div>
           </div>
         </div>
 
-        <!-- Phone 3 – Guest device -->
+        <!-- Phone 3 – React / Chat view -->
         <div class="phone-mockup phone-mockup-3">
           <div class="phone-side-btn phone-side-btn--vol-up"></div>
           <div class="phone-side-btn phone-side-btn--vol-down"></div>
@@ -266,21 +269,25 @@
           <div class="phone-screen">
             <div class="phone-island"></div>
             <div class="phone-status">
-              <span>9:41</span><span class="phone-status-icons">▲▲ ▊</span>
+              <span class="pst-time">9:41</span>
+              <span class="pst-icons">▲▲▲ ▮▮</span>
             </div>
-            <div class="phone-screen-content">
-              <div class="phone-video-thumb">
-                <div class="phone-video-play">▶</div>
+            <div class="phone-app">
+              <div class="pa-header">Party Chat</div>
+              <div class="pa-chat">
+                <div class="pa-chat-row pa-chat-left">
+                  <div class="pa-avatar pa-avatar--xs" style="background:#06b6d4">K</div>
+                  <div class="pa-bubble">this song 🔥🔥</div>
+                </div>
+                <div class="pa-chat-row pa-chat-right">
+                  <div class="pa-bubble pa-bubble--self">TURN IT UP ⚡</div>
+                </div>
+                <div class="pa-chat-row pa-chat-left">
+                  <div class="pa-avatar pa-avatar--xs" style="background:#10b981">S</div>
+                  <div class="pa-bubble">love this ❤️</div>
+                </div>
               </div>
-              <div class="phone-track-name">Party Mix 2024 🔥</div>
-              <div class="mini-waveform">
-                <div class="mini-bar" style="height:6px"></div>
-                <div class="mini-bar" style="height:12px"></div>
-                <div class="mini-bar" style="height:18px"></div>
-                <div class="mini-bar" style="height:10px"></div>
-                <div class="mini-bar" style="height:14px"></div>
-              </div>
-              <div class="phone-sync-badge">✓ Synced</div>
+              <div class="pa-emoji-bar">🔥&thinsp;❤️&thinsp;🎉&thinsp;⚡</div>
             </div>
           </div>
         </div>
@@ -486,41 +493,50 @@
           <h3 class="demo-panel-title" style="text-align:center;">Playback Stays in Sync</h3>
           <p class="demo-panel-sub" style="text-align:center;">Every phone shows the exact same moment — no lag, no drift.</p>
           <div class="sync-phones" id="syncPhones">
-            <div class="phone-mockup">
-              <div class="phone-island"></div>
+            <div class="phone-mockup sp-phone-enter sp-delay-1">
+              <div class="phone-notch"></div>
               <div class="phone-screen">
-                <div class="ps-thumb ps-thumb--red">
-                  <div class="ps-play-icon">▶</div>
+                <div class="ps-video-thumb">
+                  <div class="ps-video-overlay">
+                    <div class="ps-play-icon">▶</div>
+                  </div>
                 </div>
                 <div class="ps-title">Party Mix 2024 🔥</div>
+                <div class="ps-artist">Various Artists</div>
                 <div class="ps-timestamp" data-sync="1">0:00</div>
                 <div class="ps-progress"><div class="ps-progress-fill" style="width:0%"></div></div>
+                <div class="sync-badge"><i data-lucide="wifi"></i> Synced</div>
               </div>
-              <div class="sync-badge"><i data-lucide="wifi"></i> Synced</div>
             </div>
-            <div class="phone-mockup phone-mockup--center">
-              <div class="phone-island"></div>
+            <div class="phone-mockup phone-mockup--center sp-phone-enter sp-delay-2">
+              <div class="phone-notch"></div>
               <div class="phone-screen">
-                <div class="ps-thumb ps-thumb--red">
-                  <div class="ps-play-icon">▶</div>
+                <div class="ps-video-thumb ps-video-thumb--hero">
+                  <div class="ps-video-overlay">
+                    <div class="ps-play-icon ps-play-icon--lg">▶</div>
+                  </div>
                 </div>
                 <div class="ps-title">Party Mix 2024 🔥</div>
+                <div class="ps-artist">Various Artists</div>
                 <div class="ps-timestamp" data-sync="1">0:00</div>
                 <div class="ps-progress"><div class="ps-progress-fill" style="width:0%"></div></div>
+                <div class="sync-badge sync-badge--active"><i data-lucide="wifi"></i> Synced</div>
               </div>
-              <div class="sync-badge"><i data-lucide="wifi"></i> Synced</div>
             </div>
-            <div class="phone-mockup">
-              <div class="phone-island"></div>
+            <div class="phone-mockup sp-phone-enter sp-delay-3">
+              <div class="phone-notch"></div>
               <div class="phone-screen">
-                <div class="ps-thumb ps-thumb--red">
-                  <div class="ps-play-icon">▶</div>
+                <div class="ps-video-thumb">
+                  <div class="ps-video-overlay">
+                    <div class="ps-play-icon">▶</div>
+                  </div>
                 </div>
                 <div class="ps-title">Party Mix 2024 🔥</div>
+                <div class="ps-artist">Various Artists</div>
                 <div class="ps-timestamp" data-sync="1">0:00</div>
                 <div class="ps-progress"><div class="ps-progress-fill" style="width:0%"></div></div>
+                <div class="sync-badge"><i data-lucide="wifi"></i> Synced</div>
               </div>
-              <div class="sync-badge"><i data-lucide="wifi"></i> Synced</div>
             </div>
           </div>
         </div>
