@@ -126,6 +126,14 @@ let demoState = {
   totalReactions: 0
 };
 
+// Update the caption bar below the step tabs
+function setDemoCaption(icon, text) {
+  const iconEl = $('#demoCaptionIcon');
+  const textEl = $('#demoCaptionText');
+  if (iconEl) iconEl.textContent = icon;
+  if (textEl) textEl.textContent = text;
+}
+
 function initDemo() {
   const startBtn = $('#startDemoBtn');
   const mainStartBtn = $('#mainStartDemoBtn');
@@ -205,6 +213,7 @@ async function kickoffDemo() {
   await stepUpNext();
 
   demoState.running = false;
+  setDemoCaption('🎊', 'Demo complete! Start your real party now.');
   showToast('🎊 Demo complete! Start your real party now!');
 }
 
@@ -249,36 +258,40 @@ function resetDemoUI() {
   // Reset now playing bar
   const npBar = $('.now-playing-bar');
   if (npBar) npBar.classList.remove('playing');
+  // Reset caption
+  setDemoCaption('▶', 'Click "Play Demo" to begin the walkthrough');
 }
 
 // Step 1: Search YouTube – type a query, reveal results
 async function stepSearchYouTube() {
   activateDemoStep(0);
   demoState.currentStep = 1;
+  setDemoCaption('🔍', 'Search YouTube — paste a link or type any artist, song, or playlist');
 
   const searchInput = $('#ytSearchInput');
-  showToast('🔍 Searching YouTube...');
-  await sleep(400);
+  await sleep(500);
 
   const query = 'party mix 2024';
   if (searchInput) {
     searchInput.placeholder = '';
     for (const char of query) {
-      await sleep(60);
+      await sleep(90);
       searchInput.value += char;
     }
   }
 
-  await sleep(500);
+  // Simulate a brief "searching..." pause
+  await sleep(900);
 
-  // Reveal search results one by one
+  // Reveal search results one by one with a comfortable pace
   const results = $$('.yt-result-item');
   for (const item of results) {
-    await sleep(200);
+    await sleep(320);
     item.classList.add('visible');
   }
 
-  await sleep(600);
+  // Give the user time to read the results
+  await sleep(1800);
   completeDemoStep(0);
 }
 
@@ -286,15 +299,16 @@ async function stepSearchYouTube() {
 async function stepPickVideo() {
   activateDemoStep(1);
   demoState.currentStep = 2;
+  setDemoCaption('🎬', 'Pick a video — tap any result to add it to the party queue');
 
-  showToast('🎬 Selecting video for the party...');
-  await sleep(400);
+  await sleep(800);
 
   // Highlight first search result briefly before switching panel
   const firstResult = $('.yt-result-item');
   if (firstResult) firstResult.classList.add('selected');
 
-  await sleep(800);
+  // Keep the selected state visible long enough for the user to see
+  await sleep(1600);
   completeDemoStep(1);
 }
 
@@ -302,10 +316,10 @@ async function stepPickVideo() {
 async function stepStartParty() {
   activateDemoStep(2);
   demoState.currentStep = 3;
+  setDemoCaption('🎉', 'Start the party — one tap creates a shareable code for your friends');
 
   const codeEl = $('#partyCode');
-  showToast('🎉 Starting your YouTube Party...');
-  await sleep(600);
+  await sleep(800);
 
   if (codeEl) {
     const code = generatePartyCode();
@@ -313,7 +327,7 @@ async function stepStartParty() {
     codeEl.textContent = '';
 
     for (const char of code) {
-      await sleep(60);
+      await sleep(80);
       codeEl.textContent += char;
     }
   }
@@ -322,7 +336,8 @@ async function stepStartParty() {
   const npBar = $('.now-playing-bar');
   if (npBar) npBar.classList.add('playing');
 
-  await sleep(800);
+  // Pause so the user can read the party code and status info
+  await sleep(2000);
   completeDemoStep(2);
 }
 
@@ -330,23 +345,23 @@ async function stepStartParty() {
 async function stepFriendsJoin() {
   activateDemoStep(3);
   demoState.currentStep = 4;
+  setDemoCaption('📱', 'Friends join instantly — they open the app and enter your code');
 
   const counterEl = $('#joinCounter');
   const phoneIcons = $$('.phone-join-icon');
   const npSync = $('#npSyncCount');
   const target = 10;
 
-  showToast('📱 Friends are joining the party!');
-
   for (let i = 1; i <= target; i++) {
-    await sleep(200);
+    await sleep(320);
     demoState.phoneCount = i;
     if (counterEl) counterEl.innerHTML = `<span>${i}</span>`;
     if (phoneIcons[i - 1]) phoneIcons[i - 1].classList.add('visible');
     if (npSync) npSync.textContent = String(i);
   }
 
-  await sleep(600);
+  // Pause so the user can appreciate the full room of devices
+  await sleep(1400);
   completeDemoStep(3);
 }
 
@@ -354,26 +369,34 @@ async function stepFriendsJoin() {
 async function stepStayInSync() {
   activateDemoStep(4);
   demoState.currentStep = 5;
+  setDemoCaption('🔄', 'Stay perfectly in sync — every phone plays the exact same moment');
 
-  showToast('🔄 All phones synced to the same moment!');
-  await sleep(400);
+  await sleep(600);
 
   const timestamps = $$('.ps-timestamp');
   const fills = $$('.ps-progress-fill');
-  const totalSeconds = 30;
 
-  for (let s = 1; s <= totalSeconds; s++) {
-    await sleep(100);
-    const mins = Math.floor(s / 60);
-    const secs = s % 60;
+  // Show playback progressing through a few key moments so the user can
+  // clearly see all three phones are locked to the same timestamp.
+  const keyframes = [
+    { secs: 8,  pct: 13 },
+    { secs: 22, pct: 37 },
+    { secs: 45, pct: 75 },
+  ];
+
+  for (const frame of keyframes) {
+    const mins = Math.floor(frame.secs / 60);
+    const secs = frame.secs % 60;
     const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
-    const pct = Math.round((s / totalSeconds) * 100);
 
     timestamps.forEach(el => { el.textContent = timeStr; });
-    fills.forEach(el => { el.style.width = `${pct}%`; });
+    fills.forEach(el => { el.style.width = `${frame.pct}%`; });
+
+    // Let the CSS transition (0.6 s) play out, then hold for readability
+    await sleep(1600);
   }
 
-  await sleep(600);
+  await sleep(800);
   completeDemoStep(4);
 }
 
@@ -381,21 +404,20 @@ async function stepStayInSync() {
 async function stepReactChat() {
   activateDemoStep(5);
   demoState.currentStep = 6;
+  setDemoCaption('💬', 'React and chat — send reactions and messages everyone sees in real time');
 
-  showToast('💬 React and chat with the party!');
-
-  // Enable reaction buttons
+  // Enable reaction buttons with a subtle pulse
   $$('.reaction-btn').forEach(btn => {
     btn.style.pointerEvents = 'auto';
     setTimeout(() => {
-      btn.style.transform = 'scale(1.05)';
-      setTimeout(() => { btn.style.transform = ''; }, 280);
-    }, Math.random() * 300);
+      btn.classList.add('reaction-btn--pulse');
+      setTimeout(() => { btn.classList.remove('reaction-btn--pulse'); }, 300);
+    }, Math.random() * 350);
   });
 
-  await sleep(500);
+  await sleep(700);
 
-  // Simulate chat messages appearing
+  // Simulate chat messages appearing at a comfortable reading pace
   const messages = [
     { user: 'A', text: 'this song is 🔥🔥🔥', side: 'left' },
     { user: 'M', text: 'EVERYONE VIBE!!', side: 'left' },
@@ -408,7 +430,7 @@ async function stepReactChat() {
   const reactions = ['fire', 'heart', 'party', 'lightning'];
 
   for (const msg of messages) {
-    await sleep(550);
+    await sleep(900);
 
     if (chatArea) {
       const bubble = document.createElement('div');
@@ -431,7 +453,7 @@ async function stepReactChat() {
     if (counter) counter.textContent = demoState.reactionCounts[type];
   }
 
-  await sleep(600);
+  await sleep(1200);
   completeDemoStep(5);
 }
 
@@ -439,17 +461,17 @@ async function stepReactChat() {
 async function stepUpNext() {
   activateDemoStep(6);
   demoState.currentStep = 7;
+  setDemoCaption('📋', 'Keep the party going — queue the next track and the music never stops');
 
-  showToast('📋 Queue loaded — the party keeps going!');
-  await sleep(400);
+  await sleep(600);
 
   const queueItems = $$('.queue-item');
   for (const item of queueItems) {
-    await sleep(260);
+    await sleep(500);
     item.classList.add('visible');
   }
 
-  await sleep(600);
+  await sleep(1200);
   completeDemoStep(6);
 }
 
