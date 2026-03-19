@@ -283,14 +283,14 @@
 </section>
 
 <!-- ============================================================
-     INTERACTIVE DEMO SECTION
+     INTERACTIVE DEMO SECTION – YouTube Party Flow
      ============================================================ -->
 <section class="demo-section section" id="demo" aria-label="Interactive demo">
   <div class="container">
     <div class="section-header reveal">
-      <span class="eyebrow">Try it now</span>
-      <h2>See It Live – <span class="text-gradient">Try the Demo</span></h2>
-      <p>Experience Phone Party in 4 steps. Click "Start Demo Party" to kick things off.</p>
+      <span class="eyebrow">See it in action</span>
+      <h2>How a <span class="text-gradient">YouTube Party</span> Works</h2>
+      <p>From search to sync in seconds. Click "Play Demo" to walk through the full experience.</p>
     </div>
 
     <div class="demo-container reveal">
@@ -299,61 +299,132 @@
         <div class="demo-dots">
           <span></span><span></span><span></span>
         </div>
-        <div class="demo-title-bar">phone-party.com – Live Demo</div>
-        <button class="btn btn-primary btn-sm" id="startDemoBtn">▶ Start Demo Party</button>
+        <div class="demo-title-bar">phone-party.com – YouTube Party</div>
+        <button class="btn btn-primary btn-sm" id="startDemoBtn">▶ Play Demo</button>
       </div>
 
       <!-- Step Tabs -->
       <div class="demo-steps" role="tablist">
         <div class="demo-step-tab active" role="tab" data-step="0">
-          <span class="step-num">1</span>Create Party
+          <span class="step-num">1</span>Search
         </div>
         <div class="demo-step-tab" role="tab" data-step="1">
-          <span class="step-num">2</span>Phones Joining
+          <span class="step-num">2</span>Pick Video
         </div>
         <div class="demo-step-tab" role="tab" data-step="2">
-          <span class="step-num">3</span>Upload & Queue
+          <span class="step-num">3</span>Start Party
         </div>
         <div class="demo-step-tab" role="tab" data-step="3">
-          <span class="step-num">4</span>Sync & React
+          <span class="step-num">4</span>Friends Join
+        </div>
+        <div class="demo-step-tab" role="tab" data-step="4">
+          <span class="step-num">5</span>Stay in Sync
+        </div>
+        <div class="demo-step-tab" role="tab" data-step="5">
+          <span class="step-num">6</span>React &amp; Chat
+        </div>
+        <div class="demo-step-tab" role="tab" data-step="6">
+          <span class="step-num">7</span>Up Next
         </div>
       </div>
 
       <!-- Step Content -->
       <div class="demo-content">
 
-        <!-- PANEL 1: Create Party -->
+        <!-- PANEL 1: Search YouTube -->
         <div class="demo-panel active" id="demoPanel1" role="tabpanel">
-          <h3 style="margin-bottom:8px;">Create Your Party</h3>
-          <p style="color:var(--text-secondary);font-size:0.9375rem;margin-bottom:24px;">
-            Hit "Start Demo Party" above to generate your unique party code. Share it with friends so they can join instantly.
-          </p>
-          <div class="party-code-display">
-            <div class="party-code" id="partyCode" title="Click to copy">----</div>
-            <div class="party-code-hint">👆 Click the code to copy it · Share with friends</div>
+          <h3 class="demo-panel-title">Search YouTube</h3>
+          <p class="demo-panel-sub">Type anything — music, concerts, DJ sets. The whole YouTube library is yours.</p>
+          <div class="yt-search-bar">
+            <i data-lucide="youtube" class="yt-icon"></i>
+            <input type="text" readonly id="ytSearchInput" class="yt-search-input" placeholder="Search YouTube..." value="" aria-label="YouTube search demo (read-only)">
+            <i data-lucide="search" class="yt-search-icon"></i>
           </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
-            <div style="flex:1;min-width:200px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
-              <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">HOST</div>
-              <div style="font-weight:600;">You (DJ Mode)</div>
+          <div class="yt-results" id="ytResults" aria-live="polite">
+            <div class="yt-result-item" data-idx="0">
+              <div class="yt-thumb yt-thumb--red"><i data-lucide="play"></i></div>
+              <div class="yt-result-info">
+                <div class="yt-result-title">Party Mix 2024 🔥 Best EDM Hits</div>
+                <div class="yt-result-meta">DJ Neon · 2.1M views · 1:02:14</div>
+              </div>
             </div>
-            <div style="flex:1;min-width:200px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
-              <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">VENUE</div>
-              <div style="font-weight:600;">Your Location</div>
+            <div class="yt-result-item" data-idx="1">
+              <div class="yt-thumb yt-thumb--purple"><i data-lucide="play"></i></div>
+              <div class="yt-result-info">
+                <div class="yt-result-title">Summer Vibes Playlist 🌊</div>
+                <div class="yt-result-meta">Chill Nation · 890K views · 45:32</div>
+              </div>
             </div>
-            <div style="flex:1;min-width:200px;padding:16px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:var(--radius-md);">
-              <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">STATUS</div>
-              <div style="font-weight:600;color:var(--accent-green);">🟢 Open to Join</div>
+            <div class="yt-result-item" data-idx="2">
+              <div class="yt-thumb yt-thumb--cyan"><i data-lucide="play"></i></div>
+              <div class="yt-result-info">
+                <div class="yt-result-title">Top 50 Hits Right Now 🎵</div>
+                <div class="yt-result-meta">Music Vault · 4.7M views · 3:21:00</div>
+              </div>
+            </div>
+            <div class="yt-result-item" data-idx="3">
+              <div class="yt-thumb yt-thumb--orange"><i data-lucide="play"></i></div>
+              <div class="yt-result-info">
+                <div class="yt-result-title">Hip Hop Classics Marathon</div>
+                <div class="yt-result-meta">Urban Beats · 1.3M views · 58:47</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- PANEL 2: Phones Joining -->
+        <!-- PANEL 2: Pick Your Track -->
         <div class="demo-panel" id="demoPanel2" role="tabpanel">
+          <h3 class="demo-panel-title">Pick Your Track</h3>
+          <p class="demo-panel-sub">Tap any result to add it to the party queue instantly.</p>
+          <div class="yt-video-card selected-video">
+            <div class="yt-video-thumb yt-thumb--red">
+              <i data-lucide="play-circle" class="yt-play-big"></i>
+              <div class="yt-duration-badge">1:02:14</div>
+            </div>
+            <div class="yt-video-details">
+              <div class="yt-video-title">Party Mix 2024 🔥 Best EDM Hits</div>
+              <div class="yt-video-channel">DJ Neon</div>
+              <div class="yt-video-stats">2.1M views · YouTube</div>
+              <div class="yt-add-to-party">
+                <button class="btn btn-primary btn-sm" style="pointer-events:none;" tabindex="-1">
+                  <i data-lucide="plus-circle"></i> Add to Party Queue
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="yt-selected-badge">✓ Selected for party</div>
+        </div>
+
+        <!-- PANEL 3: Start the Party -->
+        <div class="demo-panel" id="demoPanel3" role="tabpanel">
+          <h3 class="demo-panel-title">Start the Party</h3>
+          <p class="demo-panel-sub">One tap generates a shareable code. Send it to friends and playback begins.</p>
+          <div class="party-code-display">
+            <div class="party-code" id="partyCode" title="Click to copy">----</div>
+            <div class="party-code-hint">👆 Share this code — friends join instantly</div>
+          </div>
+          <div class="party-start-status">
+            <div class="pss-row">
+              <span class="pss-label">Host</span>
+              <span class="pss-value">You (DJ Mode) 🎧</span>
+            </div>
+            <div class="pss-row">
+              <span class="pss-label">Now Playing</span>
+              <span class="pss-value pss-highlight">Party Mix 2024 🔥</span>
+            </div>
+            <div class="pss-row">
+              <span class="pss-label">Status</span>
+              <span class="pss-value" style="color:var(--accent-green);">🟢 Party is Live!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 4: Friends Join -->
+        <div class="demo-panel" id="demoPanel4" role="tabpanel">
           <div class="phones-joining">
-            <h3>Phones Joining</h3>
+            <h3 class="demo-panel-title">Friends Join</h3>
             <div class="join-counter" id="joinCounter"><span>0</span></div>
-            <p style="color:var(--text-secondary);font-size:0.875rem;">phones connected to your party</p>
+            <p style="color:var(--text-secondary);font-size:0.875rem;">devices connected to your party</p>
             <div class="phone-join-grid" id="phoneJoinGrid" aria-live="polite">
               <span class="phone-join-icon" aria-hidden="true"><i data-lucide="smartphone"></i></span>
               <span class="phone-join-icon" aria-hidden="true"><i data-lucide="smartphone"></i></span>
@@ -369,83 +440,112 @@
           </div>
         </div>
 
-        <!-- PANEL 3: Upload & Queue -->
-        <div class="demo-panel" id="demoPanel3" role="tabpanel">
-          <h3 style="margin-bottom:16px;">🎵 Upload & Queue</h3>
-          <div class="upload-area">
-            <div class="uz-icon"><i data-lucide="upload"></i></div>
-            <div style="font-weight:600;margin-bottom:4px;">Drop your track here</div>
-            <div style="font-size:0.8125rem;color:var(--text-muted);">MP3, WAV, FLAC, AAC up to 15MB</div>
-            <div class="upload-progress" style="margin-top:16px;">
-              <div class="upload-progress-fill" id="uploadProgressFill"></div>
-            </div>
-          </div>
-          <div class="queue-list" id="queueList">
-            <div class="queue-item" data-queue="1">
-              <div class="queue-num">▶</div>
-              <div style="flex:1;">
-                <div style="font-weight:600;font-size:0.9375rem;">Blinding Lights</div>
-                <div style="font-size:0.75rem;color:var(--text-muted);">The Weeknd</div>
+        <!-- PANEL 5: Stay in Sync -->
+        <div class="demo-panel" id="demoPanel5" role="tabpanel">
+          <h3 class="demo-panel-title" style="text-align:center;">Playback Stays in Sync</h3>
+          <p class="demo-panel-sub" style="text-align:center;">Every phone shows the exact same moment — no lag, no drift.</p>
+          <div class="sync-phones" id="syncPhones">
+            <div class="phone-mockup">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="ps-thumb ps-thumb--red"></div>
+                <div class="ps-title">Party Mix 2024 🔥</div>
+                <div class="ps-timestamp" data-sync="1">0:00</div>
+                <div class="ps-progress"><div class="ps-progress-fill" style="width:0%"></div></div>
               </div>
-              <div style="font-size:0.75rem;color:var(--text-muted);">3:20</div>
+              <div class="sync-badge"><i data-lucide="wifi"></i> Synced</div>
             </div>
-            <div class="queue-item" data-queue="2">
-              <div class="queue-num">2</div>
-              <div style="flex:1;">
-                <div style="font-weight:600;font-size:0.9375rem;">Levitating</div>
-                <div style="font-size:0.75rem;color:var(--text-muted);">Dua Lipa</div>
+            <div class="phone-mockup phone-mockup--center">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="ps-thumb ps-thumb--red"></div>
+                <div class="ps-title">Party Mix 2024 🔥</div>
+                <div class="ps-timestamp" data-sync="1">0:00</div>
+                <div class="ps-progress"><div class="ps-progress-fill" style="width:0%"></div></div>
               </div>
-              <div style="font-size:0.75rem;color:var(--text-muted);">3:23</div>
+              <div class="sync-badge"><i data-lucide="wifi"></i> Synced</div>
             </div>
-            <div class="queue-item" data-queue="3">
-              <div class="queue-num">3</div>
-              <div style="flex:1;">
-                <div style="font-weight:600;font-size:0.9375rem;">As It Was</div>
-                <div style="font-size:0.75rem;color:var(--text-muted);">Harry Styles</div>
+            <div class="phone-mockup">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="ps-thumb ps-thumb--red"></div>
+                <div class="ps-title">Party Mix 2024 🔥</div>
+                <div class="ps-timestamp" data-sync="1">0:00</div>
+                <div class="ps-progress"><div class="ps-progress-fill" style="width:0%"></div></div>
               </div>
-              <div style="font-size:0.75rem;color:var(--text-muted);">2:37</div>
-            </div>
-            <div class="queue-item" data-queue="4">
-              <div class="queue-num">4</div>
-              <div style="flex:1;">
-                <div style="font-weight:600;font-size:0.9375rem;">Flowers</div>
-                <div style="font-size:0.75rem;color:var(--text-muted);">Miley Cyrus</div>
-              </div>
-              <div style="font-size:0.75rem;color:var(--text-muted);">3:21</div>
+              <div class="sync-badge"><i data-lucide="wifi"></i> Synced</div>
             </div>
           </div>
         </div>
 
-        <!-- PANEL 4: Sync & React -->
-        <div class="demo-panel" id="demoPanel4" role="tabpanel">
-          <h3 style="text-align:center;margin-bottom:8px;">All Phones Synced!</h3>
-          <p style="text-align:center;color:var(--text-secondary);font-size:0.875rem;margin-bottom:28px;">React to the music in real time. Every reaction is shared with the whole party!</p>
-
-          <div class="reaction-panel">
-            <button class="reaction-btn" data-reaction="fire" style="pointer-events:none;" aria-label="Fire reaction">
-              <span class="reaction-emoji">🔥</span>
-              <span class="reaction-count">0</span>
-            </button>
-            <button class="reaction-btn" data-reaction="heart" style="pointer-events:none;" aria-label="Heart reaction">
-              <span class="reaction-emoji">❤️</span>
-              <span class="reaction-count">0</span>
-            </button>
-            <button class="reaction-btn" data-reaction="party" style="pointer-events:none;" aria-label="Party reaction">
-              <span class="reaction-emoji">🎉</span>
-              <span class="reaction-count">0</span>
-            </button>
-            <button class="reaction-btn" data-reaction="lightning" style="pointer-events:none;" aria-label="Lightning reaction">
-              <span class="reaction-emoji">⚡</span>
-              <span class="reaction-count">0</span>
-            </button>
-          </div>
-
-          <div class="energy-display">
-            <div class="energy-label">Crowd Energy</div>
-            <div class="energy-bar-outer">
-              <div class="energy-bar-inner" id="demoEnergyBar"></div>
+        <!-- PANEL 6: React & Chat -->
+        <div class="demo-panel" id="demoPanel6" role="tabpanel">
+          <h3 class="demo-panel-title" style="text-align:center;">React &amp; Chat</h3>
+          <p class="demo-panel-sub" style="text-align:center;">Send reactions and messages. Every guest sees them in real time.</p>
+          <div class="react-chat-layout">
+            <div class="reaction-panel">
+              <button class="reaction-btn" data-reaction="fire" style="pointer-events:none;" aria-label="Fire reaction">
+                <span class="reaction-emoji">🔥</span>
+                <span class="reaction-count">0</span>
+              </button>
+              <button class="reaction-btn" data-reaction="heart" style="pointer-events:none;" aria-label="Heart reaction">
+                <span class="reaction-emoji">❤️</span>
+                <span class="reaction-count">0</span>
+              </button>
+              <button class="reaction-btn" data-reaction="party" style="pointer-events:none;" aria-label="Party reaction">
+                <span class="reaction-emoji">🎉</span>
+                <span class="reaction-count">0</span>
+              </button>
+              <button class="reaction-btn" data-reaction="lightning" style="pointer-events:none;" aria-label="Lightning reaction">
+                <span class="reaction-emoji">⚡</span>
+                <span class="reaction-count">0</span>
+              </button>
             </div>
-            <div class="energy-value" id="demoEnergyValue">0%</div>
+            <div class="chat-area" id="chatArea" aria-live="polite" aria-label="Party chat"></div>
+          </div>
+        </div>
+
+        <!-- PANEL 7: Up Next / Queue -->
+        <div class="demo-panel" id="demoPanel7" role="tabpanel">
+          <h3 class="demo-panel-title">Keep It Going</h3>
+          <p class="demo-panel-sub">Your queue auto-plays — the party never stops.</p>
+          <div class="queue-list" id="queueList">
+            <div class="queue-item now-playing" data-queue="1">
+              <div class="queue-num">▶</div>
+              <div class="yt-queue-thumb yt-thumb--red"></div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:0.9375rem;">Party Mix 2024 🔥</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">DJ Neon · Playing now</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--accent-neon);">Live ●</div>
+            </div>
+            <div class="queue-item" data-queue="2">
+              <div class="queue-num">2</div>
+              <div class="yt-queue-thumb yt-thumb--purple"></div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:0.9375rem;">Summer Vibes Playlist 🌊</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">Chill Nation · Up next</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">45:32</div>
+            </div>
+            <div class="queue-item" data-queue="3">
+              <div class="queue-num">3</div>
+              <div class="yt-queue-thumb yt-thumb--cyan"></div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:0.9375rem;">Top 50 Hits Right Now 🎵</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">Music Vault · Queued</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">3:21:00</div>
+            </div>
+            <div class="queue-item" data-queue="4">
+              <div class="queue-num">4</div>
+              <div class="yt-queue-thumb yt-thumb--orange"></div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:0.9375rem;">Hip Hop Classics Marathon</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">Urban Beats · Queued</div>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">58:47</div>
+            </div>
           </div>
         </div>
 
@@ -453,10 +553,10 @@
 
       <!-- Now Playing Bar (global) -->
       <div class="now-playing-bar" style="margin:0;border-radius:0;border-top:1px solid var(--border-subtle);border-bottom:none;border-left:none;border-right:none;">
-        <div class="np-disc"><i data-lucide="music"></i></div>
+        <div class="np-disc np-disc--yt"><i data-lucide="youtube"></i></div>
         <div class="np-info">
-          <div class="np-title">Blinding Lights</div>
-          <div class="np-artist">The Weeknd · 10 Phones Synced</div>
+          <div class="np-title">Party Mix 2024 🔥 Best EDM Hits</div>
+          <div class="np-artist">DJ Neon · <span id="npSyncCount">0</span> Phones Synced</div>
         </div>
         <div class="np-waveform" aria-hidden="true">
           <div class="np-bar" style="height:8px;animation-delay:0s"></div>

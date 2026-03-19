@@ -115,7 +115,7 @@ function initHeroAnimations() {
 }
 
 /* ============================================================
-   5. Interactive Demo System – 4-step state machine
+   5. Interactive Demo System – 7-step YouTube Party flow
    ============================================================ */
 let demoState = {
   currentStep: 0,
@@ -161,10 +161,10 @@ function initDemo() {
     }
   });
 
-  // Reaction buttons
+  // Reaction buttons (enabled from step 6 onwards)
   $$('.reaction-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      if (demoState.currentStep < 4) {
+      if (demoState.currentStep < 6) {
         showToast('⚠️ Start the demo first!');
         return;
       }
@@ -179,9 +179,6 @@ function initDemo() {
       // Floating emoji effect
       const emoji = btn.querySelector('.reaction-emoji')?.textContent || '🎉';
       spawnFloatingEmoji(emoji, e.clientX, e.clientY);
-
-      // Update crowd energy
-      updateCrowdEnergy();
     });
   });
 }
@@ -199,10 +196,13 @@ async function kickoffDemo() {
   });
   resetDemoUI();
 
-  await step1CreateParty();
-  await step2PhonesJoining();
-  await step3UploadQueue();
-  await step4SyncReact();
+  await stepSearchYouTube();
+  await stepPickVideo();
+  await stepStartParty();
+  await stepFriendsJoin();
+  await stepStayInSync();
+  await stepReactChat();
+  await stepUpNext();
 
   demoState.running = false;
   showToast('🎊 Demo complete! Start your real party now!');
@@ -218,6 +218,12 @@ function resetDemoUI() {
   $$('.demo-panel').forEach((p, i) => {
     p.classList.toggle('active', i === 0);
   });
+  // Reset search input & results
+  const searchInput = $('#ytSearchInput');
+  if (searchInput) searchInput.value = '';
+  $$('.yt-result-item').forEach(el => {
+    el.classList.remove('visible', 'selected');
+  });
   // Reset party code
   const codeEl = $('#partyCode');
   if (codeEl) codeEl.textContent = '----';
@@ -226,100 +232,91 @@ function resetDemoUI() {
   // Reset counter
   const counterEl = $('#joinCounter');
   if (counterEl) counterEl.innerHTML = '<span>0</span>';
-  // Reset upload progress
-  const progFill = $('#uploadProgressFill');
-  if (progFill) progFill.style.width = '0%';
+  // Reset npSyncCount
+  const npSync = $('#npSyncCount');
+  if (npSync) npSync.textContent = '0';
+  // Reset sync phone timestamps and progress
+  $$('.ps-timestamp').forEach(el => { el.textContent = '0:00'; });
+  $$('.ps-progress-fill').forEach(el => { el.style.width = '0%'; });
+  // Reset chat area
+  const chatArea = $('#chatArea');
+  if (chatArea) chatArea.innerHTML = '';
   // Reset queue items
-  $$('.queue-item').forEach(el => el.classList.remove('visible', 'now-playing'));
+  $$('.queue-item').forEach(el => el.classList.remove('visible'));
   // Reset reaction counts
   $$('.reaction-count').forEach(el => el.textContent = '0');
   $$('.reaction-btn').forEach(btn => btn.style.pointerEvents = 'none');
-  // Reset energy
-  const energyBar = $('#demoEnergyBar');
-  const energyVal = $('#demoEnergyValue');
-  if (energyBar) energyBar.style.width = '0%';
-  if (energyVal) energyVal.textContent = '0%';
   // Reset now playing bar
   const npBar = $('.now-playing-bar');
   if (npBar) npBar.classList.remove('playing');
 }
 
-// Step 1: Generate party code
-async function step1CreateParty() {
+// Step 1: Search YouTube – type a query, reveal results
+async function stepSearchYouTube() {
   activateDemoStep(0);
   demoState.currentStep = 1;
 
-  const codeEl = $('#partyCode');
-  if (!codeEl) return;
+  const searchInput = $('#ytSearchInput');
+  showToast('🔍 Searching YouTube...');
+  await sleep(400);
 
-  showToast('🎵 Creating your party...');
-  await sleep(600);
-
-  // Animate code generation character by character
-  const code = generatePartyCode();
-  demoState.partyCode = code;
-  codeEl.textContent = '';
-
-  for (let i = 0; i < code.length; i++) {
-    await sleep(60);
-    codeEl.textContent += code[i];
-  }
-
-  await sleep(800);
-  completeDemoStep(0);
-}
-
-// Step 2: Phones joining counter animation
-async function step2PhonesJoining() {
-  activateDemoStep(1);
-  demoState.currentStep = 2;
-
-  const counterEl = $('#joinCounter');
-  const phoneIcons = $$('.phone-join-icon');
-  const target = 12;
-
-  showToast('📱 Phones are joining the party!');
-
-  for (let i = 1; i <= target; i++) {
-    await sleep(220);
-    demoState.phoneCount = i;
-    if (counterEl) counterEl.innerHTML = `<span>${i}</span>`;
-    if (phoneIcons[i - 1]) phoneIcons[i - 1].classList.add('visible');
-  }
-
-  await sleep(600);
-  completeDemoStep(1);
-}
-
-// Step 3: Upload track + populate queue
-async function step3UploadQueue() {
-  activateDemoStep(2);
-  demoState.currentStep = 3;
-
-  const progressFill = $('#uploadProgressFill');
-  const queueItems = $$('.queue-item');
-
-  showToast('🎵 Uploading tracks...');
-
-  // Animate upload progress bar
-  if (progressFill) {
-    for (let p = 0; p <= 100; p += 5) {
-      await sleep(50);
-      progressFill.style.width = `${p}%`;
+  const query = 'party mix 2024';
+  if (searchInput) {
+    searchInput.placeholder = '';
+    for (const char of query) {
+      await sleep(60);
+      searchInput.value += char;
     }
   }
 
-  await sleep(400);
-  showToast('✅ Track uploaded! Building queue...');
-  await sleep(300);
+  await sleep(500);
 
-  // Reveal queue items one by one
-  for (const item of queueItems) {
-    await sleep(280);
+  // Reveal search results one by one
+  const results = $$('.yt-result-item');
+  for (const item of results) {
+    await sleep(200);
     item.classList.add('visible');
   }
 
-  if (queueItems[0]) queueItems[0].classList.add('now-playing');
+  await sleep(600);
+  completeDemoStep(0);
+}
+
+// Step 2: Pick a video – highlight the first result
+async function stepPickVideo() {
+  activateDemoStep(1);
+  demoState.currentStep = 2;
+
+  showToast('🎬 Selecting video for the party...');
+  await sleep(400);
+
+  // Highlight first search result briefly before switching panel
+  const firstResult = $('.yt-result-item');
+  if (firstResult) firstResult.classList.add('selected');
+
+  await sleep(800);
+  completeDemoStep(1);
+}
+
+// Step 3: Start the party – generate party code
+async function stepStartParty() {
+  activateDemoStep(2);
+  demoState.currentStep = 3;
+
+  const codeEl = $('#partyCode');
+  showToast('🎉 Starting your YouTube Party...');
+  await sleep(600);
+
+  if (codeEl) {
+    const code = generatePartyCode();
+    demoState.partyCode = code;
+    codeEl.textContent = '';
+
+    for (const char of code) {
+      await sleep(60);
+      codeEl.textContent += char;
+    }
+  }
 
   // Activate now playing bar
   const npBar = $('.now-playing-bar');
@@ -329,40 +326,131 @@ async function step3UploadQueue() {
   completeDemoStep(2);
 }
 
-// Step 4: Enable reactions + crowd energy
-async function step4SyncReact() {
+// Step 4: Friends join – phone icons pop in
+async function stepFriendsJoin() {
   activateDemoStep(3);
   demoState.currentStep = 4;
 
-  showToast('🔥 All phones synced! React to the music!');
+  const counterEl = $('#joinCounter');
+  const phoneIcons = $$('.phone-join-icon');
+  const npSync = $('#npSyncCount');
+  const target = 10;
+
+  showToast('📱 Friends are joining the party!');
+
+  for (let i = 1; i <= target; i++) {
+    await sleep(200);
+    demoState.phoneCount = i;
+    if (counterEl) counterEl.innerHTML = `<span>${i}</span>`;
+    if (phoneIcons[i - 1]) phoneIcons[i - 1].classList.add('visible');
+    if (npSync) npSync.textContent = String(i);
+  }
+
+  await sleep(600);
+  completeDemoStep(3);
+}
+
+// Step 5: Stay in sync – animate timestamps together
+async function stepStayInSync() {
+  activateDemoStep(4);
+  demoState.currentStep = 5;
+
+  showToast('🔄 All phones synced to the same moment!');
+  await sleep(400);
+
+  const timestamps = $$('.ps-timestamp');
+  const fills = $$('.ps-progress-fill');
+  const totalSeconds = 30;
+
+  for (let s = 1; s <= totalSeconds; s++) {
+    await sleep(100);
+    const mins = Math.floor(s / 60);
+    const secs = s % 60;
+    const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
+    const pct = Math.round((s / totalSeconds) * 100);
+
+    timestamps.forEach(el => { el.textContent = timeStr; });
+    fills.forEach(el => { el.style.width = `${pct}%`; });
+  }
+
+  await sleep(600);
+  completeDemoStep(4);
+}
+
+// Step 6: React & Chat – enable reactions + show chat bubbles
+async function stepReactChat() {
+  activateDemoStep(5);
+  demoState.currentStep = 6;
+
+  showToast('💬 React and chat with the party!');
 
   // Enable reaction buttons
   $$('.reaction-btn').forEach(btn => {
     btn.style.pointerEvents = 'auto';
-    btn.style.animation = 'none';
-    btn.style.transition = 'all 0.3s var(--transition-spring)';
-    // Pulse each button in
     setTimeout(() => {
       btn.style.transform = 'scale(1.05)';
-      setTimeout(() => btn.style.transform = '', 300);
-    }, Math.random() * 400);
+      setTimeout(() => { btn.style.transform = ''; }, 280);
+    }, Math.random() * 300);
   });
 
-  // Auto-simulate some initial reactions for visual effect
-  await sleep(800);
+  await sleep(500);
+
+  // Simulate chat messages appearing
+  const messages = [
+    { user: 'A', text: 'this song is 🔥🔥🔥', side: 'left' },
+    { user: 'M', text: 'EVERYONE VIBE!!', side: 'left' },
+    { user: 'S', text: 'Best party ever! 🎉', side: 'right' },
+    { user: 'K', text: 'Turn it up!! ⚡', side: 'left' },
+    { user: 'J', text: 'love this track ❤️', side: 'right' }
+  ];
+
+  const chatArea = $('#chatArea');
   const reactions = ['fire', 'heart', 'party', 'lightning'];
-  for (let i = 0; i < 8; i++) {
-    await sleep(300);
+
+  for (const msg of messages) {
+    await sleep(550);
+
+    if (chatArea) {
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble chat-bubble--${msg.side}`;
+      bubble.innerHTML = `
+        <div class="chat-avatar chat-avatar--${msg.user.toLowerCase()}">${msg.user}</div>
+        <div class="chat-msg">${msg.text}</div>`;
+      chatArea.appendChild(bubble);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => bubble.classList.add('visible'));
+      });
+    }
+
+    // Simultaneously simulate a reaction
     const type = reactions[Math.floor(Math.random() * reactions.length)];
     demoState.reactionCounts[type] = (demoState.reactionCounts[type] || 0) + 1;
     demoState.totalReactions++;
-    const btn = $(`.reaction-btn[data-reaction="${type}"]`);
-    const counter = btn?.querySelector('.reaction-count');
+    const reactionBtn = $(`.reaction-btn[data-reaction="${type}"]`);
+    const counter = reactionBtn?.querySelector('.reaction-count');
     if (counter) counter.textContent = demoState.reactionCounts[type];
-    updateCrowdEnergy();
   }
 
-  completeDemoStep(3);
+  await sleep(600);
+  completeDemoStep(5);
+}
+
+// Step 7: Up Next queue – reveal items one by one
+async function stepUpNext() {
+  activateDemoStep(6);
+  demoState.currentStep = 7;
+
+  showToast('📋 Queue loaded — the party keeps going!');
+  await sleep(400);
+
+  const queueItems = $$('.queue-item');
+  for (const item of queueItems) {
+    await sleep(260);
+    item.classList.add('visible');
+  }
+
+  await sleep(600);
+  completeDemoStep(6);
 }
 
 function activateDemoStep(index) {
