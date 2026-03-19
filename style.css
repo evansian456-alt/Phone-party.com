@@ -520,6 +520,15 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 56px;
+  align-items: center;
+}
+
+.hero-cta-sub {
+  width: 100%;
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  text-align: left;
 }
 
 .hero-stats {
