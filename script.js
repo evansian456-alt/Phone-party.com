@@ -258,6 +258,8 @@ function resetDemoUI() {
   // Reset now playing bar
   const npBar = $('.now-playing-bar');
   if (npBar) npBar.classList.remove('playing');
+  // Reset sync phone entrance state
+  $$('.sp-phone-enter').forEach(el => el.classList.remove('visible'));
   // Reset caption
   setDemoCaption('▶', 'Click "Play Demo" to begin the walkthrough');
 }
@@ -370,6 +372,11 @@ async function stepStayInSync() {
   activateDemoStep(4);
   demoState.currentStep = 5;
   setDemoCaption('🔄', 'Stay perfectly in sync — every phone plays the exact same moment');
+
+  // Trigger staggered entrance for sync phones
+  $$('.sp-phone-enter').forEach(el => {
+    requestAnimationFrame(() => el.classList.add('visible'));
+  });
 
   await sleep(600);
 
@@ -688,6 +695,44 @@ function initPartyButtons() {
 /* ============================================================
    14. Feature Cards – stagger entrance
    ============================================================ */
+
+/* ============================================================
+   13b. Start the Party – smart auth routing
+   ============================================================ */
+function getAuthToken() {
+  // Check localStorage for common auth token keys
+  const keys = ['token', 'authToken', 'accessToken', 'jwt', 'userToken', 'phonePartyToken', 'session'];
+  for (const key of keys) {
+    try {
+      if (localStorage.getItem(key)) return localStorage.getItem(key);
+      if (sessionStorage.getItem(key)) return sessionStorage.getItem(key);
+    } catch (_) { /* storage access denied */ }
+  }
+  // Check cookies for common session/auth cookie names
+  const cookieKeys = new Set(['token', 'authToken', 'session', 'sessionId', 'access_token', 'auth', 'user']);
+  const cookies = document.cookie.split(';');
+  for (const cookie of cookies) {
+    const name = cookie.split('=')[0].trim();
+    if (cookieKeys.has(name)) return cookie;
+  }
+  return null;
+}
+
+function initStartPartyButtons() {
+  // All "Start the Party" links that point to /signup
+  const startLinks = $$('a[href="/signup"]');
+  startLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      const token = getAuthToken();
+      if (token) {
+        e.preventDefault();
+        window.location.href = '/app';
+      }
+      // No token → let default href="/signup" navigate naturally
+    });
+  });
+}
+
 function initFeatureCards() {
   const cards = $$('.feature-card');
   const observer = new IntersectionObserver(
@@ -862,6 +907,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPricingTilt();
   initCounters();
   initPartyButtons();
+  initStartPartyButtons();
   initFeatureCards();
   initEnergyMeter();
   initParticles();
