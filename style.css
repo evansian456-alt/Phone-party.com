@@ -304,6 +304,11 @@ h1, h2, h3, h4, h5, h6 {
 .btn-sm { padding: 10px 20px; font-size: 0.875rem; }
 .btn-lg { padding: 18px 40px; font-size: 1.0625rem; }
 
+/* Icon sizing inside buttons */
+.btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.btn-sm svg { width: 16px; height: 16px; }
+.btn-lg svg { width: 20px; height: 20px; }
+
 /* ============================================================
    Navigation
    ============================================================ */
