@@ -6,6 +6,15 @@ server {
     root /usr/share/nginx/html;
     index index.html;
 
+    # Redirect /signup and /app* to the real app subdomain
+    location = /signup {
+        return 301 https://app.phone-party.com/signup;
+    }
+
+    location ^~ /app {
+        return 301 https://app.phone-party.com$request_uri;
+    }
+
     location / {
         try_files $uri $uri/ /index.html;
     }
