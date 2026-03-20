@@ -674,77 +674,13 @@ function showToast(message, duration = 3000) {
 }
 
 /* ============================================================
-   13a. Start the Party button – auth-aware routing
-   ============================================================ */
-function isLoggedIn() {
-  // Check common auth token keys in localStorage and sessionStorage
-  const keys = ['authToken', 'auth_token', 'token', 'user', 'session', 'accessToken'];
-  return keys.some(k => localStorage.getItem(k) || sessionStorage.getItem(k));
-}
-
-function getStartPartyDestination() {
-  return isLoggedIn() ? '/app' : '/signup';
-}
-
-function initStartPartyButtons() {
-  // Collect all "Start the Party" CTA buttons.
-  // Use data-start-party attribute (preferred) or fall back to initial href.
-  // We mark each button with data-start-party so re-runs are safe.
-  const candidates = [
-    '#heroStartPartyBtn',
-    '.nav-actions a[href="/signup"]',
-    '.mobile-menu a[href="/signup"]',
-    '.cta-buttons a[href="/signup"]',
-  ];
-
-  candidates.forEach(sel => {
-    $$(sel).forEach(btn => {
-      // Tag the button so repeated calls don't re-bind listeners
-      if (btn.dataset.startParty) return;
-      btn.dataset.startParty = '1';
-
-      // Update href so middle-click / right-click also works correctly
-      btn.href = getStartPartyDestination();
-
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        window.location.href = getStartPartyDestination();
-      });
-    });
-  });
-
-  // Also handle any button already tagged (href may have changed since last call)
-  $$('[data-start-party]').forEach(btn => {
-    btn.href = getStartPartyDestination();
-  });
-}
-
-/* ============================================================
-   13. Create Party / Join Party button handlers
-   ============================================================ */
-function initPartyButtons() {
-  $$('[data-action="create-party"]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      fireConfetti(btn);
-      const code = generatePartyCode();
-      showToast(`🎉 Party created! Code: ${code}`);
-    });
-  });
-
-  $$('[data-action="join-party"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      showToast('📱 Enter a party code to join!');
-    });
-  });
-}
-
-/* ============================================================
-   14. Feature Cards – stagger entrance
+   13. Start the Party button – auth-aware routing
    ============================================================ */
 
-/* ============================================================
-   13b. Start the Party – smart auth routing
-   ============================================================ */
+// Base URL for the Phone Party app (separate from this marketing site).
+// Update this constant if the app moves to a different URL.
+const APP_URL = 'https://app.phone-party.com';
+
 function getAuthToken() {
   // Check localStorage/sessionStorage for common auth token keys
   const keys = ['token', 'authToken', 'accessToken', 'jwt', 'userToken', 'phonePartyToken', 'session'];
@@ -768,21 +704,61 @@ function getAuthToken() {
   return null;
 }
 
+function getStartPartyDestination() {
+  return getAuthToken() ? APP_URL : `${APP_URL}/signup`;
+}
+
 function initStartPartyButtons() {
-  // All "Start the Party" links that point to /signup (including those with query params)
-  const startLinks = $$('a[href^="/signup"]');
-  startLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      const token = getAuthToken();
-      if (token) {
+  // Collect all "Start the Party" / signup CTA buttons
+  const selectors = [
+    '#heroStartPartyBtn',
+    '.nav-actions a[data-cta="signup"]',
+    '.mobile-menu a[data-cta="signup"]',
+    '.cta-buttons a[data-cta="signup"]',
+  ];
+
+  selectors.forEach(sel => {
+    $$(sel).forEach(btn => {
+      // Guard against double-binding on repeated calls
+      if (btn.dataset.startParty) return;
+      btn.dataset.startParty = '1';
+
+      // Update href so middle-click / right-click also works correctly
+      btn.href = getStartPartyDestination();
+
+      btn.addEventListener('click', e => {
         e.preventDefault();
-        window.location.href = '/app';
-      }
-      // No token → let default href="/signup" navigate naturally
+        window.location.href = getStartPartyDestination();
+      });
+    });
+  });
+
+  // Refresh hrefs on any already-tagged buttons (e.g. auth state changed)
+  $$('[data-start-party]').forEach(btn => {
+    btn.href = getStartPartyDestination();
+  });
+}
+
+/* ============================================================
+   14. Create Party / Join Party button handlers
+   ============================================================ */
+function initPartyButtons() {
+  $$('[data-action="create-party"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.location.href = getStartPartyDestination();
+    });
+  });
+
+  $$('[data-action="join-party"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.location.href = `${APP_URL}/join`;
     });
   });
 }
 
+/* ============================================================
+   15. Feature Cards – stagger entrance
+   ============================================================ */
 function initFeatureCards() {
   const cards = $$('.feature-card');
   const observer = new IntersectionObserver(
