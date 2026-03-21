@@ -2471,6 +2471,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .provider-desc { font-size: 0.875rem; color: var(--text-secondary); }
+.provider-badge { margin-top: 12px; }
 
 .provider-card.youtube:hover { border-color: rgba(255,0,0,0.3); }
 .provider-card.spotify:hover { border-color: rgba(29,185,84,0.3); }

@@ -382,7 +382,7 @@
         <!-- PANEL 1: Search YouTube -->
         <div class="demo-panel active" id="demoPanel1" role="tabpanel">
           <h3 class="demo-panel-title">Search YouTube</h3>
-          <p class="demo-panel-sub">Type anything — music, concerts, DJ sets. The whole YouTube library is yours.</p>
+          <p class="demo-panel-sub">Signed-in hosts with Party Pass or Pro can search YouTube — music, concerts, DJ sets — and stream directly to the party.</p>
           <div class="yt-search-bar">
             <i data-lucide="youtube" class="yt-icon"></i>
             <input type="text" readonly id="ytSearchInput" class="yt-search-input" placeholder="Search YouTube..." value="" aria-label="YouTube search demo (read-only)">
@@ -665,8 +665,8 @@
       <!-- Step 3 -->
       <div class="step-card reveal reveal-delay-3">
         <div class="step-number"><span class="step-icon"><i data-lucide="music"></i></span></div>
-        <h3 class="step-title">Upload Music or Pick a Provider</h3>
-        <p class="step-desc">Upload MP3s directly from your phone, or connect YouTube, Spotify, and SoundCloud with Official App Sync.</p>
+        <h3 class="step-title">Upload Music or Connect a Streaming Provider</h3>
+        <p class="step-desc">Upload MP3s directly from your phone (free). To stream from YouTube, Spotify, or SoundCloud — or use Official App Sync — a Party Pass or Pro subscription is required.</p>
       </div>
 
       <!-- Step 4 -->
@@ -758,15 +758,15 @@
       <div class="feature-card">
         <div class="icon-wrap"><i data-lucide="play-circle"></i></div>
         <h3 class="feature-title">Streaming Party</h3>
-        <p class="feature-desc">Connect YouTube, Spotify, and SoundCloud. Play from any platform while guests sync via their phones.</p>
-        <span class="feature-badge badge-new">NEW</span>
+        <p class="feature-desc">Connect YouTube, Spotify, and SoundCloud. Available to signed-in hosts with Party Pass or Pro — guests sync automatically.</p>
+        <span class="feature-badge badge-pro">PASS</span>
       </div>
 
       <div class="feature-card">
         <div class="icon-wrap"><i data-lucide="link"></i></div>
         <h3 class="feature-title">Official App Sync</h3>
-        <p class="feature-desc">Use your existing streaming apps. Phone Party syncs the playback — your library, your rules.</p>
-        <span class="feature-badge badge-new">NEW</span>
+        <p class="feature-desc">Use your existing streaming apps. Requires sign-in and Party Pass or Pro — Phone Party syncs every guest phone to your playback automatically.</p>
+        <span class="feature-badge badge-pro">PASS</span>
       </div>
 
       <div class="feature-card">
@@ -883,7 +883,7 @@
     <div class="section-header reveal">
       <span class="eyebrow">Stream anything</span>
       <h2>Connect Your <span class="text-gradient">Favorite Platforms</span></h2>
-      <p>Link YouTube, Spotify, and SoundCloud or use Official App Sync to play from any existing app.</p>
+      <p>Hosts with Party Pass or Pro can link YouTube, Spotify, and SoundCloud — or use Official App Sync to play from any existing app.</p>
     </div>
 
     <div class="providers-grid reveal">
@@ -895,7 +895,8 @@
           </svg>
         </span>
         <h3 class="provider-name">YouTube</h3>
-        <p class="provider-desc">Access billions of tracks and music videos. Play any YouTube audio across your party instantly.</p>
+        <p class="provider-desc">Search billions of tracks and music videos and stream them to your party. Requires a signed-in host account and Party Pass or Pro.</p>
+        <span class="feature-badge badge-pro provider-badge">Party Pass Required</span>
       </div>
       <div class="provider-card spotify">
         <span class="provider-logo" aria-label="Spotify">
@@ -904,7 +905,8 @@
           </svg>
         </span>
         <h3 class="provider-name">Spotify</h3>
-        <p class="provider-desc">Connect your Spotify Premium and play from your playlists, Discover Weekly, and curated party mixes.</p>
+        <p class="provider-desc">Connect your Spotify Premium account and play from your playlists, Discover Weekly, and curated party mixes. Requires Party Pass or Pro.</p>
+        <span class="feature-badge badge-pro provider-badge">Party Pass Required</span>
       </div>
       <div class="provider-card soundcloud">
         <span class="provider-logo" aria-label="SoundCloud">
@@ -920,7 +922,8 @@
           </svg>
         </span>
         <h3 class="provider-name">SoundCloud</h3>
-        <p class="provider-desc">Tap into underground tracks, DJ mixes, and exclusive drops from creators worldwide.</p>
+        <p class="provider-desc">Tap into underground tracks, DJ mixes, and exclusive drops from creators worldwide. Requires Party Pass or Pro.</p>
+        <span class="feature-badge badge-pro provider-badge">Party Pass Required</span>
       </div>
     </div>
 
@@ -928,7 +931,7 @@
       <div class="app-sync-text">
         <span class="eyebrow" style="display:inline-block;margin-bottom:12px;">New Feature</span>
         <h3>Official App Sync</h3>
-        <p>Keep using Spotify, YouTube Music, or Apple Music on your own device. Phone Party listens to what's playing and syncs every other phone in the room — automatically. Your library. Your taste. Zero compromise.</p>
+        <p>Keep using Spotify, YouTube Music, or Apple Music on your own device. Phone Party listens to what's playing and syncs every other phone in the room — automatically. Host sign-in required. Guests hear everything without needing a streaming account.</p>
         <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
           <span class="feature-badge badge-new" style="padding:8px 16px;font-size:0.8125rem;">Beta Available Now</span>
           <span class="feature-badge badge-pro" style="padding:8px 16px;font-size:0.8125rem;">Party Pass Required</span>
@@ -938,9 +941,9 @@
         <div style="display:flex;justify-content:center;margin-bottom:16px;"><div class="icon-wrap icon-wrap--lg"><i data-lucide="link"></i></div></div>
         <h4 style="margin-bottom:8px;">How It Works</h4>
         <div style="display:flex;flex-direction:column;gap:10px;text-align:left;font-size:0.875rem;color:var(--text-secondary);">
-          <div>① Play music on your device normally</div>
+          <div>① Host plays music on their device normally</div>
           <div>② Phone Party detects the audio via sync signal</div>
-          <div>③ All guest phones lock to your stream</div>
+          <div>③ All guest phones lock to the host's stream</div>
           <div>④ Guests hear everything in perfect sync 🎉</div>
         </div>
       </div>
@@ -1207,6 +1210,7 @@
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> Guest quick replies</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> DJ quick message buttons</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> Auto party prompts</li>
+          <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> YouTube &amp; streaming integration</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> Official App Sync</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> No ads</li>
         </ul>
@@ -1229,6 +1233,7 @@
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> Custom messages</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> All reactions</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> No ads</li>
+          <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> YouTube &amp; streaming integration</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> Advanced analytics</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> Priority support</li>
           <li class="plan-feature"><span class="check-icon"><i data-lucide="check"></i></span> Official App Sync</li>
@@ -1409,7 +1414,7 @@
         </button>
         <div class="faq-answer" role="region">
           <div class="faq-answer-inner">
-            Phone Party uses a real-time sync engine to lock all connected phones to the same audio timestamp. The host uploads music or connects a streaming provider, and every phone in the party — connected via the party code — plays the audio in perfect sync. Think of it like turning every phone speaker into one element of a giant surround sound system.
+            Phone Party uses a real-time sync engine to lock all connected phones to the same audio timestamp. The host uploads music or, with a Party Pass or Pro subscription, connects a streaming provider such as YouTube or Spotify. Every phone in the party — connected via the party code — plays the audio in perfect sync. Think of it like turning every phone speaker into one element of a giant surround sound system.
           </div>
         </div>
       </div>
@@ -1440,12 +1445,12 @@
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          Does it work with Spotify?
+          Does it work with YouTube and Spotify?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-answer" role="region">
           <div class="faq-answer-inner">
-            Yes! You can connect Spotify Premium through our streaming integration. Additionally, our new Official App Sync (beta) lets you play Spotify normally on your device while Phone Party automatically syncs every other phone in the room to your stream. Spotify Premium is required for the direct integration.
+            Yes — streaming integrations for YouTube, Spotify, and SoundCloud are available to signed-in hosts with an active Party Pass or Pro subscription. Spotify also requires a Spotify Premium account for the direct integration. If you don't have a Party Pass or Pro, you can still host a party using uploaded music files. Guests never need a streaming account or an upgrade — they join and listen automatically via the party code.
           </div>
         </div>
       </div>
@@ -1469,7 +1474,7 @@
         </button>
         <div class="faq-answer" role="region">
           <div class="faq-answer-inner">
-            Official App Sync is our breakthrough feature (currently in beta) that lets you use any streaming app — Spotify, YouTube Music, Apple Music — on your own device, and Phone Party will detect the audio and automatically sync all guest phones to match. You don't need to use our in-app music player at all. Your library, your taste, your party.
+            Official App Sync is our breakthrough feature (currently in beta) that lets a signed-in host with Party Pass or Pro use any streaming app — Spotify, YouTube Music, Apple Music — on their own device, and Phone Party will detect the audio and automatically sync all guest phones to match. Guests do not need a streaming subscription. If access is denied, check that your account has an active Party Pass or Pro subscription.
           </div>
         </div>
       </div>
@@ -1482,6 +1487,18 @@
         <div class="faq-answer" role="region">
           <div class="faq-answer-inner">
             No! Guests never need to sign up or create an account. They simply open a browser, enter the party code (or scan a QR), choose a guest name, and they're instantly synced. We designed the guest experience to have zero friction — the goal is for people to join in seconds.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can guests search for songs or control YouTube?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            No — YouTube search and streaming controls are host-only features, and they require the host to be signed in with an active Party Pass or Pro subscription. Guests can react, chat, and listen, but cannot search for songs or change the playback source. If you're a host and see an "upgrade required" message when trying to use YouTube or streaming, you'll need to activate a Party Pass or Pro subscription from your account.
           </div>
         </div>
       </div>
