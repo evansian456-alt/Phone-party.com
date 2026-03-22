@@ -41,6 +41,7 @@ function initNav() {
   hamburger?.addEventListener('click', () => {
     const open = hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
     document.body.style.overflow = open ? 'hidden' : '';
   });
 
@@ -49,6 +50,7 @@ function initNav() {
     a.addEventListener('click', () => {
       hamburger.classList.remove('open');
       mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
   });
@@ -61,7 +63,21 @@ function initSmoothScroll() {
   document.addEventListener('click', e => {
     const anchor = e.target.closest('a[href^="#"]');
     if (!anchor) return;
-    const target = $(anchor.getAttribute('href'));
+    const href = anchor.getAttribute('href');
+    // '#' alone is an invalid selector and a no-op placeholder; prevent the
+    // browser's default jump-to-top but don't attempt any scrolling.
+    if (!href || href === '#') {
+      e.preventDefault();
+      return;
+    }
+    let target;
+    try {
+      target = $(href);
+    } catch (_) {
+      // Invalid selector (e.g. malformed id) – prevent default and bail.
+      e.preventDefault();
+      return;
+    }
     if (!target) return;
     e.preventDefault();
     target.scrollIntoView({ behavior: 'smooth' });
@@ -136,14 +152,9 @@ function setDemoCaption(icon, text) {
 
 function initDemo() {
   const startBtn = $('#startDemoBtn');
-  const mainStartBtn = $('#mainStartDemoBtn');
   const heroStartBtn = $('#heroStartDemoBtn');
 
   startBtn?.addEventListener('click', () => kickoffDemo());
-  mainStartBtn?.addEventListener('click', () => {
-    kickoffDemo();
-    fireConfetti(mainStartBtn);
-  });
   heroStartBtn?.addEventListener('click', () => {
     kickoffDemo();
     fireConfetti(heroStartBtn);
@@ -499,15 +510,6 @@ function completeDemoStep(index) {
   }
 }
 
-function updateCrowdEnergy() {
-  const maxEnergy = 50;
-  const percentage = Math.min(100, Math.round((demoState.totalReactions / maxEnergy) * 100));
-  const energyBar = $('#demoEnergyBar');
-  const energyVal = $('#demoEnergyValue');
-  if (energyBar) energyBar.style.width = `${percentage}%`;
-  if (energyVal) energyVal.textContent = `${percentage}%`;
-}
-
 /* ============================================================
    6. Party Code Generator
    ============================================================ */
@@ -527,12 +529,17 @@ function initFAQ() {
     btn?.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
 
-      // Close all other items
+      // Close all other items and update their aria-expanded
       $$('.faq-item.open').forEach(other => {
-        if (other !== item) other.classList.remove('open');
+        if (other !== item) {
+          other.classList.remove('open');
+          const otherBtn = other.querySelector('.faq-question');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        }
       });
 
       item.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
     });
   });
 }
@@ -674,41 +681,20 @@ function showToast(message, duration = 3000) {
 }
 
 /* ============================================================
-   13. Start the Party button – auth-aware routing
+   13. Start the Party button – CTA routing
    ============================================================ */
 
 // Base URL for the Phone Party app (separate from this marketing site).
 // Update this constant if the app moves to a different URL.
 const APP_URL = 'https://app.phone-party.com';
 
-function getAuthToken() {
-  // Check localStorage/sessionStorage for common auth token keys
-  const keys = ['token', 'authToken', 'accessToken', 'jwt', 'userToken', 'phonePartyToken', 'session'];
-  for (const key of keys) {
-    try {
-      const localVal = localStorage.getItem(key);
-      if (localVal) return localVal;
-      const sessionVal = sessionStorage.getItem(key);
-      if (sessionVal) return sessionVal;
-    } catch (_) { /* storage access denied in some contexts */ }
-  }
-  // Check cookies for common session/auth cookie names
-  const cookieKeys = new Set(['token', 'authToken', 'session', 'sessionId', 'access_token', 'auth', 'user']);
-  const cookies = document.cookie.split(';');
-  for (const cookie of cookies) {
-    const eqIdx = cookie.indexOf('=');
-    if (eqIdx === -1) continue;
-    const name = cookie.slice(0, eqIdx).trim();
-    if (cookieKeys.has(name)) return cookie.slice(eqIdx + 1).trim();
-  }
-  return null;
-}
-
-function getStartPartyDestination() {
-  return getAuthToken() ? APP_URL : `${APP_URL}/signup`;
-}
-
+// Always send users to the app's signup page; the app itself will redirect
+// already-authenticated users to their dashboard.  Cross-subdomain storage
+// (localStorage/cookies) is not reliably readable from the marketing site, so
+// attempting auth detection here produces false negatives and a poor UX.
 function initStartPartyButtons() {
+  const destination = `${APP_URL}/signup`;
+
   // Collect all "Start the Party" / signup CTA buttons
   const selectors = [
     '#heroStartPartyBtn',
@@ -724,18 +710,13 @@ function initStartPartyButtons() {
       btn.dataset.startParty = '1';
 
       // Update href so middle-click / right-click also works correctly
-      btn.href = getStartPartyDestination();
+      btn.href = destination;
 
       btn.addEventListener('click', e => {
         e.preventDefault();
-        window.location.href = getStartPartyDestination();
+        window.location.href = destination;
       });
     });
-  });
-
-  // Refresh hrefs on any already-tagged buttons (e.g. auth state changed)
-  $$('[data-start-party]').forEach(btn => {
-    btn.href = getStartPartyDestination();
   });
 }
 
@@ -745,7 +726,7 @@ function initStartPartyButtons() {
 function initPartyButtons() {
   $$('[data-action="create-party"]').forEach(btn => {
     btn.addEventListener('click', () => {
-      window.location.href = getStartPartyDestination();
+      window.location.href = `${APP_URL}/signup`;
     });
   });
 
